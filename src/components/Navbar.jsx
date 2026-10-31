@@ -4,6 +4,7 @@ import { personalData } from '../data/portfolioData'
 export default function Navbar({ onReplayIntro }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+  // Keyboard accessibility: Escape to close mobile menu
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape' && mobileMenuOpen) {
@@ -17,107 +18,49 @@ export default function Navbar({ onReplayIntro }) {
   const closeMenu = () => setMobileMenuOpen(false)
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-[#0B0E14]/90 backdrop-blur-md border-b border-[#1E2433] text-xs font-mono">
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 h-16 flex items-center justify-between">
-        {/* Brand / Logo */}
-        <div
-          onClick={onReplayIntro}
-          className="flex items-center gap-2.5 cursor-pointer group select-none"
-          title="Click to replay intro"
-        >
-          <span className="w-2 h-2 rounded-full bg-amber-400 group-hover:scale-125 transition-transform"></span>
-          <span className="font-bold text-white tracking-wider text-sm font-display">
-            {personalData.shortName}
-          </span>
-          <span className="hidden sm:inline-block text-[10px] text-slate-500 font-mono">
-            / WEB & SYSTEMS
-          </span>
-        </div>
-
-        {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center gap-7 text-slate-400">
-          <a href="#about" className="hover:text-white transition-colors magnetic-link">
-            About
-          </a>
-          <a href="#approach" className="hover:text-white transition-colors magnetic-link">
-            Approach
-          </a>
-          <a href="#projects" className="hover:text-white transition-colors magnetic-link">
-            Projects
-          </a>
-          <a href="#experience" className="hover:text-white transition-colors magnetic-link">
-            Experience
-          </a>
-          <a href="#skills" className="hover:text-white transition-colors magnetic-link">
-            Skills
-          </a>
-          <a
-            href="#contact"
-            className="px-3.5 py-1.5 rounded bg-white/5 hover:bg-white/10 text-white border border-white/10 transition-colors font-semibold"
-          >
-            Contact ↗
-          </a>
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <button
-          type="button"
-          className="md:hidden text-slate-300 hover:text-white px-2.5 py-1 text-xs border border-white/10 rounded"
-          aria-expanded={mobileMenuOpen}
-          aria-label="Toggle Navigation Menu"
-          onClick={() => setMobileMenuOpen((prev) => !prev)}
-        >
-          {mobileMenuOpen ? 'CLOSE' : 'MENU'}
-        </button>
+    <nav className="site-nav" aria-label="Main Navigation">
+      <div
+        className="nav-logo cursor-pointer select-none"
+        onClick={onReplayIntro}
+        title="Click to replay intro animation"
+      >
+        {personalData.shortName}
       </div>
 
-      {/* Mobile Menu Drawer */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0F131C] border-b border-[#1E2433] px-6 py-6 space-y-4">
-          <a
-            href="#about"
-            onClick={closeMenu}
-            className="block text-sm text-slate-300 hover:text-white"
-          >
-            About Me
+      <div className="nav-status desktop-only">
+        <span className="status-dot" aria-hidden="true"></span>
+        {personalData.status}
+      </div>
+
+      {/* Accessible Mobile Menu Toggle */}
+      <button
+        className="mobile-menu-btn"
+        type="button"
+        aria-expanded={mobileMenuOpen}
+        aria-controls="primary-navigation"
+        aria-label="Toggle Menu"
+        onClick={() => setMobileMenuOpen((prev) => !prev)}
+      >
+        {mobileMenuOpen ? 'CLOSE' : 'MENU'}
+      </button>
+
+      <ul id="primary-navigation" className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>
+        <li>
+          <a href="#work" className="magnetic-link" onClick={closeMenu}>
+            WORK
           </a>
-          <a
-            href="#approach"
-            onClick={closeMenu}
-            className="block text-sm text-slate-300 hover:text-white"
-          >
-            Dual Approach
+        </li>
+        <li>
+          <a href="#index" className="magnetic-link" onClick={closeMenu}>
+            INDEX
           </a>
-          <a
-            href="#projects"
-            onClick={closeMenu}
-            className="block text-sm text-slate-300 hover:text-white"
-          >
-            Projects
+        </li>
+        <li>
+          <a href="#profile" className="magnetic-link" onClick={closeMenu}>
+            PROFILE
           </a>
-          <a
-            href="#experience"
-            onClick={closeMenu}
-            className="block text-sm text-slate-300 hover:text-white"
-          >
-            Experience
-          </a>
-          <a
-            href="#skills"
-            onClick={closeMenu}
-            className="block text-sm text-slate-300 hover:text-white"
-          >
-            Technical Skills
-          </a>
-          <a
-            href="#contact"
-            onClick={closeMenu}
-            className="block text-sm text-amber-400 font-semibold"
-          >
-            Get In Touch ↗
-          </a>
-        </div>
-      )}
-    </header>
+        </li>
+      </ul>
+    </nav>
   )
 }
