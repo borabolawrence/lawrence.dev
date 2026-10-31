@@ -7,7 +7,6 @@ export default function ProjectShowcase() {
 
   return (
     <>
-      {/* PROJECT A: KWIP IMAGE */}
       {projectA && (
         <section id="work" className="project-showcase dark-block panel" data-color={projectA.theme}>
           <div className="project-header">
@@ -103,6 +102,7 @@ export default function ProjectShowcase() {
             <h2 className="display-title auto-split">
               <SplitText text={projectB.title} />
             </h2>
+
             {projectB.tagline && (
               <p className="tagline auto-split">
                 <SplitText text={projectB.tagline} />

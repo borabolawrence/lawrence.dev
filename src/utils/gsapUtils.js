@@ -3,11 +3,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// Binds magnetic physics to elements with .magnetic-link on devices supporting hover
 export function bindMagneticLinks() {
   const cleanupFns = []
   if (typeof window === 'undefined' || !window.matchMedia('(hover: hover)').matches) {
-    return () => {}
+    return () => { }
   }
 
   const elements = document.querySelectorAll('.magnetic-link')
@@ -41,7 +40,6 @@ export function bindMagneticLinks() {
   }
 }
 
-// Sets up dynamic theme changes on scroll based on [data-color] sections
 export function initThemeScrollTriggers() {
   const panels = gsap.utils.toArray('[data-color]')
   panels.forEach((panel) => {
@@ -55,7 +53,6 @@ export function initThemeScrollTriggers() {
   })
 }
 
-// Animates the hero typography from behind the overflow mask
 export function playHeroAnimation(delay = 0.2) {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
@@ -65,7 +62,6 @@ export function playHeroAnimation(delay = 0.2) {
     return
   }
 
-  // Words rise into view sequentially
   gsap.to('.hero-text-block .word', {
     y: '0%',
     duration: 1.2,
@@ -74,7 +70,6 @@ export function playHeroAnimation(delay = 0.2) {
     delay,
   })
 
-  // Meta items fade and slide up
   gsap.to('.meta-item', {
     y: 0,
     opacity: 1,
@@ -85,18 +80,15 @@ export function playHeroAnimation(delay = 0.2) {
   })
 }
 
-// Resets hero words into hidden position before intro runs
 export function resetHeroToHidden() {
   gsap.set('.hero-text-block .word', { y: '115%' })
   gsap.set('.meta-item', { y: 30, opacity: 0 })
 }
 
-// Sets up scroll-triggered animations for auto-split headings, fades, diagrams, and bars
 export function initScrollAnimations() {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   if (prefersReducedMotion) return
 
-  // Masked word reveals for titles
   gsap.utils.toArray('.auto-split').forEach((title) => {
     const words = title.querySelectorAll('.word')
     if (words.length) {
@@ -110,7 +102,6 @@ export function initScrollAnimations() {
     }
   })
 
-  // Fade-in reveals
   gsap.utils.toArray('.reveal-fade').forEach((el) => {
     gsap.from(el, {
       scrollTrigger: { trigger: el, start: 'top 90%' },
@@ -121,7 +112,6 @@ export function initScrollAnimations() {
     })
   })
 
-  // Architecture diagram nodes
   gsap.utils.toArray('.draw-node').forEach((node) => {
     gsap.from(node, {
       scrollTrigger: { trigger: node, start: 'top 95%', end: 'top 75%', scrub: 1 },
@@ -131,7 +121,6 @@ export function initScrollAnimations() {
     })
   })
 
-  // Architecture connector lines
   gsap.utils.toArray('.draw-line').forEach((line) => {
     gsap.from(line, {
       scrollTrigger: { trigger: line, start: 'top 90%', end: 'top 70%', scrub: 1 },
@@ -140,7 +129,6 @@ export function initScrollAnimations() {
     })
   })
 
-  // Performance benchmark growth bars
   gsap.utils.toArray('.anim-bar').forEach((bar) => {
     const targetWidth = bar.getAttribute('data-width') || '100%'
     bar.style.width = targetWidth
@@ -155,4 +143,22 @@ export function initScrollAnimations() {
       },
     )
   })
+
+  gsap.fromTo('.contact-links a',
+    {
+      y: 20,
+      opacity: 0
+    },
+    {
+      scrollTrigger: {
+        trigger: '.contact-section',
+        start: 'top 80%',
+      },
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: 'power3.out'
+    }
+  );
 }

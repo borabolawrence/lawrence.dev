@@ -2,7 +2,7 @@ import SplitText from './common/SplitText'
 import { personalData } from '../data/portfolioData'
 
 export default function ContactSection() {
-  const { email, phone, github } = personalData.contact
+  const { email, phone, github, linkedin } = personalData.contact
 
   return (
     <section id="contact" className="contact-section panel" data-color="accent">
@@ -21,6 +21,16 @@ export default function ContactSection() {
               {phone}
             </a>
           )}
+          {linkedin && (
+            <a
+              href={linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover-underline magnetic-link"
+            >
+              LinkedIn <span className="hover-arrow">↗</span>
+            </a>
+          )}
           {github && (
             <a
               href={github}
@@ -28,7 +38,7 @@ export default function ContactSection() {
               rel="noopener noreferrer"
               className="hover-underline magnetic-link"
             >
-              GitHub Profile ↗
+              GitHub Profile <span className="hover-arrow">↗</span>
             </a>
           )}
         </div>

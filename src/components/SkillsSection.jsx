@@ -18,9 +18,7 @@ export default function SkillsSection() {
         </p>
       </div>
 
-      {/* Skills Matrix Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Frontend */}
         <div className="p-7 rounded-2xl bg-[#121620] border border-[#1E2433] space-y-4">
           <div className="space-y-1 border-b border-[#1E2433] pb-3">
             <span className="text-[11px] font-mono text-amber-400 font-semibold uppercase">
@@ -64,7 +62,6 @@ export default function SkillsSection() {
           </div>
         </div>
 
-        {/* Database & Data Management */}
         <div className="p-7 rounded-2xl bg-[#121620] border border-[#1E2433] space-y-4">
           <div className="space-y-1 border-b border-[#1E2433] pb-3">
             <span className="text-[11px] font-mono text-amber-400 font-semibold uppercase">

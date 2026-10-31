@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import { personalData } from '../data/portfolioData'
+import lmbIcon from '../assets/lmb.png'
 
 export default function Navbar({ onReplayIntro }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  // Keyboard accessibility: Escape to close mobile menu
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape' && mobileMenuOpen) {
@@ -32,7 +32,6 @@ export default function Navbar({ onReplayIntro }) {
         {personalData.status}
       </div>
 
-      {/* Accessible Mobile Menu Toggle */}
       <button
         className="mobile-menu-btn"
         type="button"
@@ -47,7 +46,7 @@ export default function Navbar({ onReplayIntro }) {
       <ul id="primary-navigation" className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>
         <li>
           <a href="#work" className="magnetic-link" onClick={closeMenu}>
-            WORK
+            PROJECTS
           </a>
         </li>
         <li>

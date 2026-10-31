@@ -508,6 +508,36 @@ body[data-theme="dark"] .repo-card:hover {
     width: 100%;
 }
 
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.contact-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    will-change: transform;
+}
+
+.contact-links a:hover {
+    transform: scale(1.02);
+    opacity: 0.9;
+}
+
+.hover-arrow {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: transform;
+}
+
+.contact-links a:hover .hover-arrow {
+    transform: translate(4px, -4px) scale(1.1);
+}
+
 @media (max-width: 1024px) {
 
     .project-grid,
@@ -631,6 +661,37 @@ body[data-theme="dark"] .repo-card:hover {
     .contact-links {
         gap: 1.5rem;
         flex-direction: column;
+    }
+
+    .contact-section {
+        padding: 4rem 1.5rem;
+        text-align: center;
+    }
+
+    .contact-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-section .massive-text {
+        font-size: clamp(2.5rem, 12vw, 5rem);
+        line-height: 1.1;
+        margin-bottom: 2rem;
+    }
+
+    .contact-links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .contact-links a {
+        padding: 0.5rem 1rem;
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
     }
 }
 

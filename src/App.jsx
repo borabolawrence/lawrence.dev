@@ -38,16 +38,24 @@ export default function App() {
 
   const handleReposLoaded = (repos) => {
     setRepoCount(repos.length)
-    if (repos.length > 0) {
-      gsap.from('.repo-card:not(.fallback-card)', {
-        y: 30,
-        opacity: 0,
-        duration: 1,
-        ease: 'expo.out',
-        stagger: 0.1,
-      })
-    }
   }
+
+  useEffect(() => {
+    if (repoCount > 0) {
+      const ctx = gsap.context(() => {
+        gsap.from('.repo-card:not(.fallback-card)', {
+          y: 30,
+          opacity: 0,
+          duration: 1,
+          ease: 'expo.out',
+          stagger: 0.1,
+          onComplete: () => ScrollTrigger.refresh()
+        })
+      }, containerRef)
+
+      return () => ctx.revert()
+    }
+  }, [repoCount])
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -70,7 +78,7 @@ export default function App() {
       ctx.revert()
       document.body.setAttribute('data-theme', 'light')
     }
-  }, [repoCount])
+  }, [shouldRunIntro])
 
   return (
     <div ref={containerRef}>

@@ -4,7 +4,6 @@ import { personalData, dualPerspective } from '../data/portfolioData'
 export default function ApproachSection() {
   return (
     <section id="about" className="py-24 px-4 sm:px-8 max-w-6xl mx-auto border-t border-[#1E2433] space-y-20">
-      {/* About Me Narrative */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
         <div className="lg:col-span-4">
           <span className="text-xs font-mono text-amber-400 uppercase tracking-wider block mb-2">
@@ -20,14 +19,12 @@ export default function ApproachSection() {
             <p key={idx}>{paragraph}</p>
           ))}
 
-          {/* Philosophy Highlight Quote */}
           <div className="p-6 rounded-xl bg-[#121620] border-l-4 border-amber-400 text-slate-200 text-sm italic font-sans leading-relaxed mt-6">
             "{personalData.philosophy}"
           </div>
         </div>
       </div>
 
-      {/* Dual Perspective Pillars */}
       <div id="approach" className="space-y-8 pt-8">
         <div className="space-y-2">
           <span className="text-xs font-mono text-amber-400 uppercase tracking-wider">

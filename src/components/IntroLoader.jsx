@@ -97,7 +97,7 @@ export default function IntroLoader({ onComplete }) {
             {personalData.name}
           </div>
           <div className="text-xs sm:text-sm tracking-widest text-[#FF3300] uppercase font-bold">
-            {personalData.role} &bull; Creative Engineering
+            {personalData.role} &bull; lawrence.dev
           </div>
         </div>
 
@@ -111,7 +111,7 @@ export default function IntroLoader({ onComplete }) {
 
       <div className="flex justify-between items-center text-xs tracking-wider border-t border-white/10 pt-4">
         <span ref={statusRef} className="text-slate-400">
-          INITIALIZING DIGITAL SYSTEM...
+          1 2 3...
         </span>
         <span className="text-slate-500 hidden sm:inline">{personalData.year} PORTFOLIO ARCHIVE</span>
       </div>

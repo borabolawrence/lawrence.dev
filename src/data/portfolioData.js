@@ -20,6 +20,7 @@ export const personalData = {
   contact: {
     email: 'borabolawrence@gmail.com',
     phone: '+63 916 660 5248',
+    linkedin: "https://www.linkedin.com/in/lawrence-borabo/",
     github: 'https://github.com/borabolawrence',
     githubUsername: 'borabolawrence',
   },
@@ -32,7 +33,7 @@ export const heroData = {
 export const projectsData = [
   {
     id: 'kwip-image',
-    caseStudyTag: 'CASE STUDY 01',
+    caseStudyTag: 'Project 00',
     title: 'KWIP Image',
     theme: 'dark',
     repoUrl: 'https://github.com/borabolawrence/KWIP-Image',
@@ -71,7 +72,7 @@ export const projectsData = [
   },
   {
     id: 'invite-me',
-    caseStudyTag: 'CASE STUDY 02',
+    caseStudyTag: 'Project 01',
     title: 'Invite Me',
     theme: 'light',
     tagline: '"Making Invitation Digitally, Easy, and Beautiful"',
@@ -97,7 +98,7 @@ export const experienceData = [
     role: 'Junior Web Developer',
     company: 'Guanzon',
     description:
-      'Develop and maintain web-based solutions using WordPress, PHP, JavaScript, HTML5, and CSS3. Focus on WordPress customization, functionality development, frontend implementation, styling, and website performance improvements.',
+      'Develop and maintain web-based solutions using WordPress, PHP, JavaScript, HTML5, CSS3, and GSAP. Focus on WordPress customization, functionality development, frontend implementation, styling, and website performance improvements.',
   },
   {
     period: 'PREVIOUS EXPERIENCE',

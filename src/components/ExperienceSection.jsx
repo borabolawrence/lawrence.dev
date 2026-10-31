@@ -22,7 +22,6 @@ export default function ExperienceSection() {
             key={idx}
             className="p-8 sm:p-10 rounded-2xl bg-[#121620] border border-[#1E2433] card-hover space-y-6"
           >
-            {/* Top Info */}
             <div className="flex flex-col sm:flex-row justify-between sm:items-baseline gap-2 border-b border-[#1E2433] pb-4">
               <div>
                 <span className="text-xs font-mono text-amber-400 font-bold block mb-1">
@@ -37,12 +36,10 @@ export default function ExperienceSection() {
               </div>
             </div>
 
-            {/* Description */}
             <p className="text-sm text-slate-300 leading-relaxed">
               {item.description}
             </p>
 
-            {/* Responsibilities list */}
             <div className="space-y-2 pt-2">
               <span className="text-xs font-mono uppercase text-slate-400 tracking-wider block">
                 Areas of Work & Experience:
@@ -57,7 +54,6 @@ export default function ExperienceSection() {
               </ul>
             </div>
 
-            {/* Tech Tags */}
             <div className="pt-4 border-t border-[#1E2433] flex flex-wrap gap-2 font-mono text-xs">
               {item.technologies.map((tech, tIdx) => (
                 <span
