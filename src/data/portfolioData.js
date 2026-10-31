@@ -19,7 +19,6 @@ export const personalData = {
   },
   contact: {
     email: 'borabolawrence@gmail.com',
-    phone: '+63 916 660 5248',
     linkedin: "https://www.linkedin.com/in/lawrence-borabo/",
     github: 'https://github.com/borabolawrence',
     githubUsername: 'borabolawrence',
