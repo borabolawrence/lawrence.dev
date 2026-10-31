@@ -4,47 +4,37 @@ import { projectsData } from '../data/portfolioData'
 
 export default function ProjectShowcase() {
   const [projectA, projectB] = projectsData
-  const [activeInviteTab, setActiveInviteTab] = useState('architecture') // 'architecture' | 'schema'
-  const [simulatedLatency, setSimulatedLatency] = useState(null)
-  const [simulating, setSimulating] = useState(false)
-
-  // Simulation test for KWIP Image rewrite speed
-  const handleSimulateRequest = () => {
-    setSimulating(true)
-    setTimeout(() => {
-      const generated = (Math.random() * (4.2 - 2.1) + 2.1).toFixed(2)
-      setSimulatedLatency(generated)
-      setSimulating(false)
-    }, 450)
-  }
+  const [inviteTab, setInviteTab] = useState('features') // 'features' | 'schema'
 
   return (
-    <div id="work" className="py-24 px-4 sm:px-8 space-y-32 max-w-7xl mx-auto">
-      {/* SECTION HEADER */}
-      <div className="border-b border-white/10 pb-6">
-        <div className="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-2">
-          // FEATURED ENGINEERING CASE STUDIES
-        </div>
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-white font-display">
-          <SplitText text="SYSTEMS ARCHITECTURE & PROJECTS" />
+    <section id="projects" className="py-24 px-4 sm:px-8 max-w-6xl mx-auto border-t border-[#1E2433] space-y-16">
+      {/* Section Title */}
+      <div className="space-y-2">
+        <span className="text-xs font-mono text-amber-400 uppercase tracking-wider block">
+          03 // INDEPENDENT ENGINEERING
+        </span>
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-display">
+          <SplitText text="SELECTED PROJECTS" />
         </h2>
+        <p className="text-slate-400 text-sm max-w-2xl">
+          Independent software projects exploring web application architecture, WordPress internals,
+          performance optimization, and user experience.
+        </p>
       </div>
 
-      {/* CASE STUDY 01: KWIP IMAGE */}
+      {/* PROJECT 1: KWIP IMAGE */}
       {projectA && (
-        <section className="bg-[#0C0F17] border border-white/10 rounded-xl p-6 sm:p-12 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
-
-          {/* Top Bar */}
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/10 pb-6 mb-8">
-            <div>
-              <span className="text-xs font-mono text-cyan-400 font-semibold block mb-1">
-                {projectA.caseStudyTag}
+        <article className="p-8 sm:p-12 rounded-2xl bg-[#121620] border border-[#1E2433] space-y-8">
+          {/* Header */}
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-[#1E2433] pb-6">
+            <div className="space-y-1">
+              <span className="text-xs font-mono text-amber-400 font-semibold tracking-wider">
+                {projectA.tag}
               </span>
-              <h3 className="text-3xl sm:text-4xl font-extrabold text-white font-display">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white font-display">
                 {projectA.title}
               </h3>
-              <p className="text-sm font-mono text-slate-400 mt-1">{projectA.type}</p>
+              <p className="text-sm text-slate-400">{projectA.subtitle}</p>
             </div>
 
             {projectA.repoUrl && (
@@ -52,151 +42,139 @@ export default function ProjectShowcase() {
                 href={projectA.repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 rounded bg-white/5 hover:bg-white/10 text-white font-mono text-xs border border-white/10 transition-colors flex items-center gap-2 magnetic-link"
+                className="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-white font-mono text-xs border border-white/10 transition-colors flex items-center gap-2 magnetic-link"
               >
-                <span>INSPECT REPOSITORY</span>
-                <span className="text-cyan-400">↗</span>
+                <span>View Repository</span>
+                <span className="text-amber-400">↗</span>
               </a>
             )}
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-            {/* Left Context & Benchmarks */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* Description & Metrics */}
             <div className="lg:col-span-6 space-y-6">
-              <h4 className="text-lg font-semibold text-white font-display">
-                The Problem & Automated Solution
-              </h4>
-              <p className="text-slate-300 text-sm leading-relaxed">{projectA.description}</p>
+              <p className="text-sm text-slate-300 leading-relaxed">
+                {projectA.description}
+              </p>
 
-              {/* Performance Benchmarks Card */}
-              <div className="p-5 rounded-lg bg-[#080B12] border border-white/10 space-y-4 font-mono text-xs">
-                <div className="flex justify-between items-center border-b border-white/5 pb-2">
-                  <span className="text-slate-400 font-semibold uppercase">
-                    OBSERVED PERFORMANCE (LOCAL TESTING)
-                  </span>
-                  <button
-                    type="button"
-                    onClick={handleSimulateRequest}
-                    disabled={simulating}
-                    className="text-[11px] px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500/20 border border-cyan-500/30 transition cursor-pointer"
-                  >
-                    {simulating ? 'Simulating...' : '⚡ Test Rewrite Ping'}
-                  </button>
+              {/* Observed Benchmark Comparison Card */}
+              <div className="p-5 rounded-xl bg-[#0B0E14] border border-[#1E2433] space-y-3 font-mono text-xs">
+                <div className="text-slate-400 font-semibold uppercase text-[11px] pb-1 border-b border-white/5">
+                  Performance & Delivery Comparison
+                </div>
+                <div className="space-y-1">
+                  <div className="flex justify-between text-slate-400 text-[11px]">
+                    <span>Standard Image Request</span>
+                    <span className="text-white font-semibold">{projectA.metrics.originalAverage}</span>
+                  </div>
+                  <div className="w-full h-2 bg-white/5 rounded overflow-hidden">
+                    <div className="h-full bg-slate-500 w-full"></div>
+                  </div>
                 </div>
 
-                {projectA.metrics.map((metric, idx) => (
-                  <div key={idx} className="space-y-1.5">
-                    <div className="flex justify-between text-[11px]">
-                      <span className={metric.accent ? 'text-cyan-400 font-bold' : 'text-slate-400'}>
-                        {metric.label}
-                      </span>
-                      <span className="text-white font-semibold">{metric.value}</span>
-                    </div>
-                    <div className="w-full h-3 bg-white/5 rounded-sm overflow-hidden">
-                      <div
-                        className={`h-full ${metric.accent ? 'bg-cyan-400' : 'bg-rose-500/80'} anim-bar`}
-                        data-width={metric.width}
-                        style={{ width: metric.width }}
-                      ></div>
-                    </div>
+                <div className="space-y-1">
+                  <div className="flex justify-between text-amber-400 text-[11px] font-semibold">
+                    <span>WebP Rewrite Delivery</span>
+                    <span className="text-amber-400">{projectA.metrics.webpAverage}</span>
                   </div>
-                ))}
-
-                {simulatedLatency && (
-                  <div className="mt-3 pt-3 border-t border-white/10 text-[11px] text-emerald-400 flex items-center justify-between">
-                    <span>Live Simulation Response Time:</span>
-                    <span className="font-bold">{simulatedLatency}ms (LiteSpeed Rewrite Hit)</span>
+                  <div className="w-full h-2 bg-white/5 rounded overflow-hidden">
+                    <div className="h-full bg-amber-400 w-[26%]"></div>
                   </div>
-                )}
+                </div>
+                <div className="text-[11px] text-slate-500 pt-1">
+                  Benefit: {projectA.metrics.bandwidthSavings} with zero template disruption.
+                </div>
               </div>
             </div>
 
-            {/* Right Execution Pipeline Steps */}
+            {/* Highlights Breakdown */}
             <div className="lg:col-span-6 space-y-4">
-              <h4 className="text-lg font-semibold text-white font-display">
-                Request-Response Execution Pipeline
+              <h4 className="text-xs font-mono uppercase text-slate-400 tracking-wider">
+                Key Development Areas:
               </h4>
+              <ul className="space-y-2.5 text-xs text-slate-300 font-sans">
+                {projectA.highlights.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5">
+                    <span className="text-amber-400 font-bold text-sm shrink-0 leading-tight">✓</span>
+                    <span className="leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
 
-              <div className="space-y-3 font-mono text-xs">
-                {projectA.pipelineSteps.map((step, idx) => (
-                  <div
+              {/* Technologies */}
+              <div className="pt-4 border-t border-[#1E2433] flex flex-wrap gap-2 font-mono text-[11px]">
+                {projectA.technologies.map((tech, idx) => (
+                  <span
                     key={idx}
-                    className="p-4 rounded-lg bg-[#080B12] border border-white/10 hover:border-cyan-500/40 transition-colors flex gap-4 items-start"
+                    className="px-2.5 py-1 rounded bg-[#0B0E14] text-slate-300 border border-white/5"
                   >
-                    <div className="w-8 h-8 rounded bg-cyan-950/80 text-cyan-400 border border-cyan-800/60 flex items-center justify-center font-bold text-xs shrink-0">
-                      {step.step}
-                    </div>
-                    <div className="space-y-1">
-                      <div className="text-white font-semibold text-sm">{step.name}</div>
-                      <p className="text-slate-400 text-xs leading-relaxed font-sans">{step.desc}</p>
-                    </div>
-                  </div>
+                    {tech}
+                  </span>
                 ))}
               </div>
             </div>
           </div>
-        </section>
+        </article>
       )}
 
-      {/* CASE STUDY 02: INVITE ME */}
+      {/* PROJECT 2: INVITE ME */}
       {projectB && (
-        <section className="bg-[#0C0F17] border border-white/10 rounded-xl p-6 sm:p-12 relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
-
-          {/* Top Bar */}
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/10 pb-6 mb-8">
-            <div>
-              <span className="text-xs font-mono text-emerald-400 font-semibold block mb-1">
-                {projectB.caseStudyTag}
+        <article className="p-8 sm:p-12 rounded-2xl bg-[#121620] border border-[#1E2433] space-y-8">
+          {/* Header */}
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-[#1E2433] pb-6">
+            <div className="space-y-1">
+              <span className="text-xs font-mono text-amber-400 font-semibold tracking-wider">
+                {projectB.tag}
               </span>
-              <h3 className="text-3xl sm:text-4xl font-extrabold text-white font-display">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white font-display">
                 {projectB.title}
               </h3>
-              <p className="text-sm font-mono text-slate-400 mt-1">{projectB.tagline}</p>
+              <p className="text-sm text-slate-400">{projectB.subtitle}</p>
             </div>
 
             {/* View Switcher Tabs */}
-            <div className="flex items-center gap-1 bg-[#080B12] p-1 rounded-lg border border-white/10 text-xs font-mono">
+            <div className="flex items-center gap-1 bg-[#0B0E14] p-1 rounded-lg border border-white/5 font-mono text-xs">
               <button
                 type="button"
-                onClick={() => setActiveInviteTab('architecture')}
+                onClick={() => setInviteTab('features')}
                 className={`px-3 py-1.5 rounded transition ${
-                  activeInviteTab === 'architecture'
-                    ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 font-semibold'
+                  inviteTab === 'features'
+                    ? 'bg-amber-400/20 text-amber-300 border border-amber-400/30 font-semibold'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
-                Architecture View
+                Features & Architecture
               </button>
               <button
                 type="button"
-                onClick={() => setActiveInviteTab('schema')}
+                onClick={() => setInviteTab('schema')}
                 className={`px-3 py-1.5 rounded transition ${
-                  activeInviteTab === 'schema'
-                    ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 font-semibold'
+                  inviteTab === 'schema'
+                    ? 'bg-amber-400/20 text-amber-300 border border-amber-400/30 font-semibold'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
-                Prisma Schema
+                Prisma Relational Model
               </button>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-            {/* Left Context & Tech Highlights */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* Description & Tech Stack */}
             <div className="lg:col-span-5 space-y-6">
-              <h4 className="text-lg font-semibold text-white font-display">
-                High-Performance Decoupled Architecture
-              </h4>
-              <p className="text-slate-300 text-sm leading-relaxed">{projectB.description}</p>
+              <p className="text-sm text-slate-300 leading-relaxed">
+                {projectB.description}
+              </p>
 
               <div className="space-y-3 font-mono text-xs">
-                <span className="text-slate-500 block uppercase">Infrastructure Stack:</span>
+                <span className="text-slate-400 uppercase text-[11px] block">
+                  Technologies Utilized:
+                </span>
                 <div className="flex flex-wrap gap-2">
-                  {projectB.techStack.map((tech, idx) => (
+                  {projectB.technologies.map((tech, idx) => (
                     <span
                       key={idx}
-                      className="px-2.5 py-1 rounded bg-[#080B12] border border-white/10 text-slate-300"
+                      className="px-2.5 py-1 rounded bg-[#0B0E14] text-slate-300 border border-white/5"
                     >
                       {tech}
                     </span>
@@ -205,38 +183,38 @@ export default function ProjectShowcase() {
               </div>
             </div>
 
-            {/* Right Display: Flow or Prisma Schema */}
+            {/* Content: Features vs Schema */}
             <div className="lg:col-span-7">
-              {activeInviteTab === 'architecture' ? (
-                <div className="space-y-4">
-                  {projectB.architectureHighlights.map((item, idx) => (
+              {inviteTab === 'features' ? (
+                <div className="space-y-3 font-sans text-xs">
+                  <h4 className="font-mono text-xs uppercase text-slate-400 tracking-wider mb-2">
+                    Key Features & Technical Areas:
+                  </h4>
+                  {projectB.highlights.map((item, idx) => (
                     <div
                       key={idx}
-                      className="p-5 rounded-lg bg-[#080B12] border border-white/10 hover:border-emerald-500/40 transition-colors space-y-1.5"
+                      className="p-3.5 rounded-lg bg-[#0B0E14] border border-[#1E2433] flex items-start gap-3"
                     >
-                      <div className="flex items-center gap-2 text-emerald-400 font-mono text-xs font-bold">
-                        <span>[NODE 0{idx + 1}]</span>
-                        <span className="text-white text-sm font-semibold">{item.title}</span>
-                      </div>
-                      <p className="text-slate-400 text-xs leading-relaxed font-sans">{item.desc}</p>
+                      <span className="text-amber-400 font-bold shrink-0 mt-0.5">•</span>
+                      <p className="text-slate-300 leading-relaxed">{item}</p>
                     </div>
                   ))}
                 </div>
               ) : (
-                <div className="bg-[#080B12] border border-white/10 rounded-lg p-4 font-mono text-xs overflow-x-auto shadow-inner">
+                <div className="p-4 rounded-xl bg-[#0B0E14] border border-[#1E2433] font-mono text-xs overflow-x-auto">
                   <div className="text-slate-500 text-[11px] pb-2 border-b border-white/5 mb-3 flex justify-between">
                     <span>prisma/schema.prisma</span>
-                    <span className="text-emerald-400">PostgreSQL Relational Mapping</span>
+                    <span className="text-amber-400">PostgreSQL (Neon)</span>
                   </div>
-                  <pre className="text-slate-300 leading-relaxed font-mono text-[11px]">
+                  <pre className="text-slate-300 leading-relaxed text-[11px]">
                     <code>{projectB.schemaSnippet}</code>
                   </pre>
                 </div>
               )}
             </div>
           </div>
-        </section>
+        </article>
       )}
-    </div>
+    </section>
   )
 }

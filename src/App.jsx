@@ -6,12 +6,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import IntroLoader from './components/IntroLoader'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
+import ApproachSection from './components/ApproachSection'
 import ProjectShowcase from './components/ProjectShowcase'
-import SystemsSection from './components/SystemsSection'
-import RepoIndex from './components/RepoIndex'
-import ProfileSection from './components/ProfileSection'
+import ExperienceSection from './components/ExperienceSection'
+import SkillsSection from './components/SkillsSection'
 import ContactSection from './components/ContactSection'
-import TelemetryBar from './components/TelemetryBar'
 
 // Utilities
 import { checkShouldPlayIntro } from './utils/introUtils'
@@ -24,7 +23,6 @@ import {
 
 export default function App() {
   const [shouldRunIntro, setShouldRunIntro] = useState(() => checkShouldPlayIntro())
-  const [repoCount, setRepoCount] = useState(0)
   const containerRef = useRef(null)
 
   // Complete intro and trigger hero kinetic animation
@@ -41,27 +39,13 @@ export default function App() {
     setShouldRunIntro(true)
   }
 
-  // Callback when GitHub repos finish loading
-  const handleReposLoaded = (repos) => {
-    setRepoCount(repos.length)
-    if (repos.length > 0) {
-      gsap.from('.repo-card:not(.fallback-card)', {
-        y: 25,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'expo.out',
-        stagger: 0.08,
-      })
-    }
-  }
-
   // Master GSAP Lifecycle Effect
   useEffect(() => {
     const ctx = gsap.context(() => {
       // 1. Setup magnetic links
       const cleanupMagnetic = bindMagneticLinks()
 
-      // 2. Setup scroll reveals (auto-split titles, metric bars)
+      // 2. Setup scroll reveals (auto-split titles)
       initScrollAnimations()
 
       // 3. If intro is skipped (soft refresh), animate hero immediately
@@ -79,38 +63,38 @@ export default function App() {
     return () => {
       ctx.revert()
     }
-  }, [repoCount])
+  }, [])
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-[#0A0D14] text-slate-100 flex flex-col font-sans selection:bg-cyan-500/30 selection:text-cyan-300">
-      {/* System Boot Intro Overlay */}
+    <div
+      ref={containerRef}
+      className="min-h-screen bg-[#0B0E14] text-slate-100 flex flex-col font-sans selection:bg-amber-400/20 selection:text-amber-300"
+    >
+      {/* Brand Intro Overlay */}
       {shouldRunIntro && <IntroLoader onComplete={handleIntroComplete} />}
 
-      {/* Engineering Navigation */}
+      {/* Navigation */}
       <Navbar onReplayIntro={handleReplayIntro} />
 
-      <main className="flex-1 pb-16">
-        {/* Hero Section & Interactive Terminal */}
+      <main className="flex-1">
+        {/* Hero Section */}
         <HeroSection />
 
-        {/* Featured Software Architecture & Projects */}
+        {/* Background & Dual Approach */}
+        <ApproachSection />
+
+        {/* Selected Project Case Studies */}
         <ProjectShowcase />
 
-        {/* Enterprise Infrastructure & MySQL Binary Replication */}
-        <SystemsSection />
+        {/* Professional Work Experience */}
+        <ExperienceSection />
 
-        {/* Live GitHub Repository Index */}
-        <RepoIndex onReposLoaded={handleReposLoaded} />
+        {/* Technical Skills & Education */}
+        <SkillsSection />
 
-        {/* Profile, Qualifications & Work History */}
-        <ProfileSection />
-
-        {/* Contact Section */}
+        {/* Contact & Footer */}
         <ContactSection />
       </main>
-
-      {/* Floating System Telemetry Bar */}
-      <TelemetryBar />
     </div>
   )
 }

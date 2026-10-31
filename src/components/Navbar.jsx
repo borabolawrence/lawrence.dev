@@ -17,114 +17,104 @@ export default function Navbar({ onReplayIntro }) {
   const closeMenu = () => setMobileMenuOpen(false)
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-[#0A0D14]/85 backdrop-blur-md border-b border-white/5 font-mono text-xs">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 h-16 flex items-center justify-between">
-        {/* Logo & Replay Trigger */}
+    <header className="fixed top-0 left-0 w-full z-50 bg-[#0B0E14]/90 backdrop-blur-md border-b border-[#1E2433] text-xs font-mono">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 h-16 flex items-center justify-between">
+        {/* Brand / Logo */}
         <div
           onClick={onReplayIntro}
-          className="flex items-center gap-3 cursor-pointer group"
-          title="Click to reboot / replay system intro"
+          className="flex items-center gap-2.5 cursor-pointer group select-none"
+          title="Click to replay intro"
         >
-          <div className="w-2.5 h-2.5 rounded-sm bg-cyan-400 group-hover:bg-emerald-400 transition-colors shadow-[0_0_8px_rgba(0,229,255,0.6)]"></div>
-          <span className="font-bold text-white tracking-wider text-sm">
+          <span className="w-2 h-2 rounded-full bg-amber-400 group-hover:scale-125 transition-transform"></span>
+          <span className="font-bold text-white tracking-wider text-sm font-display">
             {personalData.shortName}
           </span>
-          <span className="text-[10px] text-cyan-400/80 px-1.5 py-0.5 rounded bg-cyan-950/60 border border-cyan-800/50 hidden sm:inline-block">
-            SYS_DEV
+          <span className="hidden sm:inline-block text-[10px] text-slate-500 font-mono">
+            / WEB & SYSTEMS
           </span>
         </div>
 
-        {/* Live Status Telemetry (Desktop) */}
-        <div className="hidden lg:flex items-center gap-3 px-3 py-1 rounded-full bg-white/[0.03] border border-white/10 text-slate-400 text-[11px]">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span>{personalData.replicationStatus}</span>
-          <span className="text-slate-600">|</span>
-          <span className="text-slate-300">DAGUPAN NODE</span>
-        </div>
+        {/* Desktop Nav Links */}
+        <nav className="hidden md:flex items-center gap-7 text-slate-400">
+          <a href="#about" className="hover:text-white transition-colors magnetic-link">
+            About
+          </a>
+          <a href="#approach" className="hover:text-white transition-colors magnetic-link">
+            Approach
+          </a>
+          <a href="#projects" className="hover:text-white transition-colors magnetic-link">
+            Projects
+          </a>
+          <a href="#experience" className="hover:text-white transition-colors magnetic-link">
+            Experience
+          </a>
+          <a href="#skills" className="hover:text-white transition-colors magnetic-link">
+            Skills
+          </a>
+          <a
+            href="#contact"
+            className="px-3.5 py-1.5 rounded bg-white/5 hover:bg-white/10 text-white border border-white/10 transition-colors font-semibold"
+          >
+            Contact ↗
+          </a>
+        </nav>
 
         {/* Mobile Menu Button */}
         <button
           type="button"
-          className="lg:hidden text-slate-300 hover:text-white px-2 py-1 text-xs border border-white/10 rounded"
+          className="md:hidden text-slate-300 hover:text-white px-2.5 py-1 text-xs border border-white/10 rounded"
           aria-expanded={mobileMenuOpen}
           aria-label="Toggle Navigation Menu"
           onClick={() => setMobileMenuOpen((prev) => !prev)}
         >
           {mobileMenuOpen ? 'CLOSE' : 'MENU'}
         </button>
-
-        {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center gap-6">
-          <a
-            href="#work"
-            className="text-slate-400 hover:text-cyan-400 transition-colors magnetic-link"
-          >
-            <span className="text-cyan-500 mr-1">01.</span>PROJECTS
-          </a>
-          <a
-            href="#systems"
-            className="text-slate-400 hover:text-cyan-400 transition-colors magnetic-link"
-          >
-            <span className="text-cyan-500 mr-1">02.</span>INFRASTRUCTURE
-          </a>
-          <a
-            href="#index"
-            className="text-slate-400 hover:text-cyan-400 transition-colors magnetic-link"
-          >
-            <span className="text-cyan-500 mr-1">03.</span>REPOSITORIES
-          </a>
-          <a
-            href="#profile"
-            className="text-slate-400 hover:text-cyan-400 transition-colors magnetic-link"
-          >
-            <span className="text-cyan-500 mr-1">04.</span>EXPERIENCE
-          </a>
-          <a
-            href="#contact"
-            className="px-3 py-1.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500 hover:text-slate-950 transition-all font-semibold magnetic-link"
-          >
-            CONNECT ↗
-          </a>
-        </nav>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#0A0D14] border-b border-white/10 px-6 py-6 space-y-4">
+        <div className="md:hidden bg-[#0F131C] border-b border-[#1E2433] px-6 py-6 space-y-4">
           <a
-            href="#work"
+            href="#about"
             onClick={closeMenu}
-            className="block text-sm text-slate-300 hover:text-cyan-400"
+            className="block text-sm text-slate-300 hover:text-white"
           >
-            <span className="text-cyan-500 mr-2">01.</span>PROJECTS
+            About Me
           </a>
           <a
-            href="#systems"
+            href="#approach"
             onClick={closeMenu}
-            className="block text-sm text-slate-300 hover:text-cyan-400"
+            className="block text-sm text-slate-300 hover:text-white"
           >
-            <span className="text-cyan-500 mr-2">02.</span>INFRASTRUCTURE
+            Dual Approach
           </a>
           <a
-            href="#index"
+            href="#projects"
             onClick={closeMenu}
-            className="block text-sm text-slate-300 hover:text-cyan-400"
+            className="block text-sm text-slate-300 hover:text-white"
           >
-            <span className="text-cyan-500 mr-2">03.</span>REPOSITORIES
+            Projects
           </a>
           <a
-            href="#profile"
+            href="#experience"
             onClick={closeMenu}
-            className="block text-sm text-slate-300 hover:text-cyan-400"
+            className="block text-sm text-slate-300 hover:text-white"
           >
-            <span className="text-cyan-500 mr-2">04.</span>EXPERIENCE
+            Experience
+          </a>
+          <a
+            href="#skills"
+            onClick={closeMenu}
+            className="block text-sm text-slate-300 hover:text-white"
+          >
+            Technical Skills
           </a>
           <a
             href="#contact"
             onClick={closeMenu}
-            className="block text-sm text-cyan-400 font-semibold"
+            className="block text-sm text-amber-400 font-semibold"
           >
-            <span className="text-cyan-500 mr-2">05.</span>CONNECT
+            Get In Touch ↗
           </a>
         </div>
       )}

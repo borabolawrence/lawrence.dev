@@ -1,166 +1,143 @@
 export const personalData = {
   name: 'Lawrence Borabo',
-  shortName: 'L. BORABO',
-  tagline: 'Database Integrity. Systems & Full-Stack Engineering.',
-  role: 'Web Developer & Systems Engineer',
-  formerRole: 'Former MIS Associate',
-  location: 'Dagupan City, PH',
-  coordinates: '16.0433° N, 120.3333° E',
-  primaryStack: ['PHP 8.3', 'Next.js 15', 'WordPress', 'MySQL', 'Prisma', 'PowerShell'],
-  status: 'SYSTEM STATUS: OPERATIONAL',
-  replicationStatus: 'BINARY LOGS: SYNCED',
-  systemVersion: 'SYS_OS v3.1',
-  year: '2026',
-  bio: [
-    'Bridging enterprise database administration with modern front-end and back-end web engineering.',
-    'I build web systems that prioritize relational data integrity, automated pipelines, and low-latency delivery before rendering the user interface.',
-  ],
+  shortName: 'LAWRENCE BORABO',
+  headline: 'Junior Web Developer & WordPress Engineer',
+  tagline: 'Bridging web development with practical IT operations and database systems.',
+  location: 'Dagupan City, Pangasinan, Philippines',
+  currentRole: 'Junior Web Developer at Guanzon',
+  currentPeriod: 'October 2026 – Present',
   education: {
-    degree: 'BS Information Technology',
+    degree: 'Bachelor of Science in Information Technology (BSIT)',
     institution: 'Universidad de Dagupan',
-    years: '2020 – 2024',
-    focus: 'Database Systems, Systems Administration, Web Application Development',
   },
+  certification: 'Computer Systems Servicing NC II',
   contact: {
     email: 'borabolawrence@gmail.com',
     phone: '+63 916 660 5248',
     github: 'https://github.com/borabolawrence',
     githubUsername: 'borabolawrence',
   },
+  about: [
+    'I am a Junior Web Developer with a background in Information Technology, database operations, technical support, and web development. My experience combines practical business IT operations with hands-on software development, allowing me to approach technical problems from both a development and systems perspective.',
+    'I currently work as a Junior Web Developer at Guanzon, where I work with WordPress, PHP, JavaScript, HTML, and CSS to develop and maintain web-based solutions. My responsibilities and technical interests extend beyond website development, particularly toward improving functionality, optimizing performance, maintaining code quality, and creating solutions that address practical business requirements.',
+    'Before transitioning into web development, I gained experience in IT and MIS operations, where I worked with MySQL databases, SQL queries, data maintenance, reporting, and internal business systems. I also developed automation workflows using PowerShell and Excel to reduce repetitive tasks and improve data-processing efficiency. This experience gave me an understanding of how software, databases, and business operations work together.',
+  ],
+  philosophy:
+    'My background in IT operations and database management influences how I approach software development. I consider not only how an application looks and behaves, but also how its data is handled, how its components interact, and how it performs under real-world conditions.',
 }
 
-export const terminalCommands = {
-  help: [
-    'AVAILABLE COMMANDS:',
-    '  get-stack          Print core technologies and infrastructure stack',
-    '  test-replication   Simulate MySQL binary replication latency & sync check',
-    '  show-experience    Display career milestones and Guanzon Group experience',
-    '  cat contact.json   Output developer contact details & channels',
-    '  clear              Clear terminal history',
-  ],
-  'get-stack': [
-    '// CORE INFRASTRUCTURE & APPLICATION STACK',
-    'Backend & Frameworks : PHP 8.x, Next.js (App Router), WordPress Core',
-    'Databases & ORM       : MySQL (Binary Replication), PostgreSQL, Prisma ORM',
-    'Scripting & DevOps   : PowerShell Automation, Bash, VPN Tunneling (IPsec/OpenVPN)',
-    'Frontend & Motion     : React 19, Tailwind CSS, GSAP, JavaScript (ESNext)',
-  ],
-  'test-replication': [
-    'PINGING PRIMARY DB CLUSTER (Dagupan Main Node)...',
-    '[OK] Binary log coordinator: mysql-bin.000412 @ pos 849201',
-    '[OK] Branch replica 01: Latency 8ms  | Seconds_Behind_Master: 0',
-    '[OK] Branch replica 02: Latency 14ms | Seconds_Behind_Master: 0',
-    '[OK] VPN Tunnel: Encrypted (AES-256-GCM) | Status: STABLE',
-    '>> ALL NODES SYNCHRONIZED WITH ZERO REPLICATION LAG <<',
-  ],
-  'show-experience': [
-    'Guanzon Group (Sept 2026 - Present)',
-    '  Role: Junior Web Developer',
-    '  Stack: Vanilla PHP, WordPress Plugins/Themes, HTML5, CSS3, ES6+',
-    '------------------------------------------------------------------',
-    'Guanzon Group (Mar 2025 - Sept 2026)',
-    '  Role: MIS Associate',
-    '  Stack: MySQL Replication, PowerShell Automation, SQL, VPN Networking',
-  ],
-  'cat contact.json': [
-    '{',
-    '  "developer": "Lawrence Borabo",',
-    '  "email": "borabolawrence@gmail.com",',
-    '  "phone": "+63 916 660 5248",',
-    '  "github": "https://github.com/borabolawrence",',
-    '  "location": "Dagupan City, Pangasinan, Philippines"',
-    '}',
-  ],
-}
+export const dualPerspective = [
+  {
+    category: 'Web & Application Development',
+    subtitle: 'Frontend craft, custom WordPress engineering, and full-stack web applications',
+    points: [
+      'WordPress customization, bespoke theme architecture, and plugin development.',
+      'Full-stack Next.js applications utilizing React, App Router, and Prisma ORM.',
+      'Frontend implementation focusing on clean semantic HTML5, CSS3, Tailwind, and JavaScript.',
+      'Performance optimization, WebP media delivery, and smooth user interactions via GSAP.',
+    ],
+  },
+  {
+    category: 'IT & Data Operations Foundation',
+    subtitle: 'Database reliability, PowerShell workflow automation, and systems administration',
+    points: [
+      'Working with MySQL databases, relational structures, and complex SQL data retrieval.',
+      'Automating business reporting and data extraction pipelines using PowerShell and Excel.',
+      'Supporting database replication, backup verification, and business continuity operations.',
+      'Understanding operational constraints before writing application-level code.',
+    ],
+  },
+]
+
+export const experienceData = [
+  {
+    role: 'Junior Web Developer',
+    company: 'Guanzon',
+    period: 'October 2026 – Present',
+    type: 'Current Role',
+    description:
+      'Currently developing and maintaining web-based solutions using WordPress, PHP, JavaScript, HTML5, and CSS3. Focused on creating reliable functionality, custom WordPress features, frontend styling, and web performance improvements.',
+    responsibilities: [
+      'Website development, ongoing maintenance, and WordPress customization.',
+      'PHP-based functionality development, custom templates, and backend integrations.',
+      'Frontend implementation, styling, and JavaScript interactions.',
+      'Website performance optimization, responsiveness, and usability improvements.',
+      'Ensuring code quality, maintainability, and clean architecture across projects.',
+    ],
+    technologies: ['WordPress', 'PHP', 'JavaScript', 'HTML5', 'CSS3', 'MySQL'],
+  },
+  {
+    role: 'IT / MIS Support',
+    company: 'Guanzon Group',
+    period: 'Previous Experience',
+    type: 'Systems & Operations',
+    description:
+      'Managed internal business systems, database maintenance, data retrieval, and technical operational workflows. Developed PowerShell automation scripts and structured Excel workflows to eliminate manual data overhead.',
+    responsibilities: [
+      'Database maintenance, data updates, and working with internal MySQL structures.',
+      'Writing SQL queries to retrieve, modify, and analyze business-critical records.',
+      'Developing PowerShell scripts to automate reporting and data extraction workflows.',
+      'Processing exported datasets using Excel, including advanced VLOOKUP and PivotTables.',
+      'Organizing and maintaining historical sales and inventory reports.',
+      'Supporting database replication and backup-related operations across branches.',
+      'Providing technical support through structured ticket-based workflows.',
+    ],
+    technologies: ['MySQL', 'SQL', 'PowerShell', 'Microsoft Excel', 'Database Operations', 'Git'],
+  },
+]
 
 export const projectsData = [
   {
     id: 'kwip-image',
-    caseStudyTag: 'CASE STUDY 01 // PERFORMANCE OPTIMIZATION',
+    tag: 'WORDPRESS PLUGIN DEVELOPMENT',
     title: 'KWIP Image',
-    type: 'WordPress Plugin & WebP Server Caching Engine',
-    theme: 'dark',
+    subtitle: 'WordPress Image Optimization & WebP Delivery Plugin',
     repoUrl: 'https://github.com/borabolawrence/KWIP-Image',
-    tagline: 'Zero-disruption WebP conversion with server-level rewrite caching',
     description:
-      'Unoptimized media files cripple page speeds and drive up bandwidth costs. KWIP Image is an automated WordPress optimization plugin that intercepts raw JPEG/PNG requests, processes them locally into lightweight WebP formats using the WordPress Filesystem API, and delivers them via server-level rewrite rules without altering database media IDs or theme templates.',
-    metrics: [
-      {
-        label: 'Original Unoptimized Image',
-        value: '4–20ms (Avg 14.8ms)',
-        width: '100%',
-        accent: false,
-      },
-      {
-        label: 'KWIP WebP Rewrite Delivery',
-        value: '2–7ms (Avg 3.6ms)',
-        width: '26%',
-        accent: true,
-      },
+      'An independently developed WordPress plugin designed to improve website image loading performance through automated WebP conversion and server-level rewrite rules, while strictly preserving original image files and maintaining compatibility with existing themes and the WordPress Media Library.',
+    highlights: [
+      'WebP Image Conversion: Automatically converts raw JPEG and PNG files into lightweight WebP formats.',
+      'Preservation of Originals: Ensures original media files remain intact for non-destructive optimization.',
+      'Server-Level Rewrite Rules: Leverages Apache and LiteSpeed configurations to serve WebP files directly without changing attachment URLs.',
+      'Background Queue Processing: Offloads conversion tasks to an asynchronous queue to prevent admin dashboard lockup.',
+      'Media Library Integration: Seamlessly integrates with the standard WordPress Media Library UI.',
+      'Server Environment Detection: Detects available image processing libraries (GD, Imagick) and server capabilities.',
     ],
-    pipelineSteps: [
-      {
-        step: '01',
-        name: 'Request Interception',
-        desc: 'Browser requests /uploads/image.jpg via HTTP GET.',
-      },
-      {
-        step: '02',
-        name: 'Web Server Rules',
-        desc: 'LiteSpeed / Apache checks for cached .webp version directly on disk.',
-      },
-      {
-        step: '03',
-        name: 'Asynchronous Conversion',
-        desc: 'On cache miss, WP-Cron queue locks file and spawns local WebP conversion via FS API.',
-      },
-      {
-        step: '04',
-        name: 'Low-Latency Serving',
-        desc: 'Subsequent requests hit memory/disk cache in < 4ms with zero PHP execution overhead.',
-      },
-    ],
+    metrics: {
+      originalAverage: '14.8ms',
+      webpAverage: '3.6ms',
+      bandwidthSavings: 'Up to 75% file size reduction',
+    },
+    technologies: ['PHP', 'WordPress APIs', 'JavaScript', 'HTML5', 'CSS3', 'Apache / LiteSpeed'],
   },
   {
     id: 'invite-me',
-    caseStudyTag: 'CASE STUDY 02 // FULL-STACK ARCHITECTURE',
-    title: 'Invite me.',
-    type: 'Decoupled Invitation Builder & Real-Time RSVP Engine',
-    theme: 'cyan',
-    tagline: '"Making Invitation Digitally, Easy, and Beautiful"',
+    tag: 'FULL-STACK WEB APPLICATION',
+    title: 'Invite Me',
+    subtitle: 'Digital Invitation Builder & RSVP Platform',
+    repoUrl: null,
     description:
-      'A decoupled digital event system built to solve the performance trade-off between complex browser-based document editors and instant public RSVP loading. It separates the heavy, client-side canvas designer from a lean, SSR-optimized public guest page powered by Next.js App Router and Prisma.',
-    techStack: [
-      'Next.js 15 (App Router)',
-      'Prisma ORM',
-      'PostgreSQL',
-      'Tailwind CSS & shadcn/ui',
-      'Automated Image Processing',
+      'An independently developed digital invitation platform allowing users to create, customize, and publish digital invitations with unique public URLs, customizable content blocks, event countdowns, image galleries, and guest RSVP tracking.',
+    highlights: [
+      'Customizable Invitation Editor: Reusable content blocks for dates, countdowns, galleries, and maps.',
+      'Published Unique URLs: Fast, mobile-responsive public invitation pages for guests.',
+      'RSVP Management: Real-time guest RSVP tracking backed by a relational database.',
+      'Decoupled Architecture: Separates the heavy editor canvas from a lightweight, sub-50ms public SSR guest page.',
+      'Data Integrity: Managed with Prisma ORM and hosted on Neon PostgreSQL.',
     ],
-    architectureHighlights: [
-      {
-        title: 'Decoupled Rendering Engine',
-        desc: 'Client canvas editor generates lightweight JSON scene graph. Public guest slugs render via cached React Server Components under 50ms.',
-      },
-      {
-        title: 'Prisma Relational Data Model',
-        desc: 'Strict relational integrity ensuring host RSVPs, guest headcount, and custom field validation prevent race conditions.',
-      },
-      {
-        title: 'Optimized Asset Pipeline',
-        desc: 'Custom uploaded invitation media is automatically compressed and cached for rapid mobile loading.',
-      },
-    ],
-    schemaSnippet: `model Invitation {
-  id         String     @id @default(cuid())
-  slug       String     @unique
-  hostId     String
-  title      String
-  eventDate  DateTime
-  sceneData  Json       // Lightweight canvas graph
-  guests     Guest[]
-  rsvps      Rsvp[]
-  createdAt  DateTime   @default(now())
+    technologies: ['Next.js (App Router)', 'React', 'Tailwind CSS', 'shadcn/ui', 'Prisma ORM', 'PostgreSQL (Neon)'],
+    schemaSnippet: `// Prisma Data Model for Invite Me
+model Invitation {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  eventDate   DateTime
+  location    String?
+  sceneData   Json     // Reusable block layout
+  published   Boolean  @default(false)
+  guests      Guest[]
+  rsvps       Rsvp[]
+  createdAt   DateTime @default(now())
 }
 
 model Rsvp {
@@ -174,55 +151,47 @@ model Rsvp {
   },
 ]
 
-export const systemsArchitectureData = {
-  title: 'Enterprise Infrastructure & Systems Engineering',
-  subtitle: 'Real-world database administration & PowerShell workflow automation',
-  items: [
-    {
-      badge: 'DATABASE ARCHITECTURE',
-      title: 'MySQL Binary Replication Across Distributed Branches',
-      company: 'Guanzon Group',
-      summary:
-        'Architected and maintained multi-node MySQL binary replication between enterprise headquarters and remote branch database servers.',
-      specs: [
-        'Configured master-to-slave binary logging topologies (binlog format: ROW).',
-        'Implemented automated replication health checks with auto-retry and failover protocols.',
-        'Secured cross-branch database traffic through dedicated, encrypted IPsec/OpenVPN tunnels.',
-        'Zero data inconsistency across distributed sales, inventory, and branch transactions.',
-      ],
-    },
-    {
-      badge: 'AUTOMATION SCRIPTING',
-      title: 'PowerShell Reporting & SQL Export Pipeline',
-      company: 'Guanzon Group',
-      summary:
-        'Built automated PowerShell scripting suites to execute complex, multi-table SQL queries and export scheduled structured reports.',
-      specs: [
-        'Automated extraction of enterprise datasets into formatted XML and multi-sheet Excel files.',
-        'Eliminated manual report compilation, reducing operational reporting latency by 90%.',
-        'Built robust error handling, transactional rollbacks, and automated administrator event logging.',
-      ],
-    },
+export const skillsMatrix = {
+  frontend: [
+    'HTML5',
+    'CSS3',
+    'JavaScript (ES6+)',
+    'React.js',
+    'Next.js (App Router)',
+    'Tailwind CSS',
+    'GSAP (GreenSock)',
+  ],
+  backend: [
+    'PHP',
+    'WordPress Plugin Development',
+    'WordPress Custom Themes',
+    'Next.js Server Actions & APIs',
+    'REST APIs',
+  ],
+  database: [
+    'MySQL',
+    'PostgreSQL',
+    'SQL Queries & Optimization',
+    'Prisma ORM',
+    'Database Maintenance',
+    'Database Replication & Backups',
+  ],
+  tools: [
+    'Git & GitHub',
+    'PowerShell Scripting',
+    'Microsoft Excel (Advanced Data & VLOOKUP)',
+    'Visual Studio Code',
+    'Apache & LiteSpeed Web Servers',
   ],
 }
 
-export const experienceData = [
-  {
-    period: 'SEPT 2026 – PRESENT',
-    role: 'Junior Web Developer',
-    company: 'Guanzon Group',
-    type: 'Full-time',
-    description:
-      'Engineered and maintained internal and customer-facing web applications using vanilla PHP, modern HTML5/CSS3, and JavaScript. Extended WordPress core functionality with custom plugins and bespoke theme architectures, focusing on clean DOM performance and maintainable back-end code.',
-    tags: ['Vanilla PHP', 'WordPress Internals', 'JavaScript (ES6+)', 'REST APIs', 'CSS3 Architecture'],
-  },
-  {
-    period: 'MAR 2025 – SEPT 2026',
-    role: 'MIS Associate',
-    company: 'Guanzon Group',
-    type: 'Full-time',
-    description:
-      'Administered distributed branch database servers across the enterprise. Implemented and monitored MySQL binary log replication, established encrypted VPN connectivity between headquarters and branches, and engineered PowerShell automation suites for high-speed SQL reporting.',
-    tags: ['MySQL Binary Replication', 'PowerShell Automation', 'SQL Optimization', 'VPN Networking', 'Database Backup & Recovery'],
-  },
+export const areasOfInterest = [
+  'Web Application Development',
+  'WordPress & Plugin Development',
+  'Backend Engineering',
+  'Database Engineering',
+  'Software Architecture',
+  'Web Performance Optimization',
+  'Automation & Process Improvement',
+  'User Experience & Accessibility',
 ]

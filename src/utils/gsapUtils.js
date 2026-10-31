@@ -12,19 +12,19 @@ export function bindMagneticLinks() {
 
   const elements = document.querySelectorAll('.magnetic-link')
   elements.forEach((btn) => {
-    const xTo = gsap.quickTo(btn, 'x', { duration: 0.4, ease: 'power3.out' })
-    const yTo = gsap.quickTo(btn, 'y', { duration: 0.4, ease: 'power3.out' })
+    const xTo = gsap.quickTo(btn, 'x', { duration: 0.35, ease: 'power3.out' })
+    const yTo = gsap.quickTo(btn, 'y', { duration: 0.35, ease: 'power3.out' })
 
     const handleMouseMove = (e) => {
       const rect = btn.getBoundingClientRect()
-      xTo((e.clientX - rect.left - rect.width / 2) * 0.25)
-      yTo((e.clientY - rect.top - rect.height / 2) * 0.25)
+      xTo((e.clientX - rect.left - rect.width / 2) * 0.2)
+      yTo((e.clientY - rect.top - rect.height / 2) * 0.2)
     }
 
     const handleMouseLeave = () => {
       xTo(0)
       yTo(0)
-      gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.3)' })
+      gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.3)' })
     }
 
     btn.addEventListener('mousemove', handleMouseMove)
@@ -54,7 +54,7 @@ export function playHeroAnimation(delay = 0.2) {
   // Kinetic words rise into view
   gsap.to('.hero-text-block .word', {
     y: '0%',
-    duration: 1.2,
+    duration: 1.1,
     stagger: 0.08,
     ease: 'expo.out',
     delay,
@@ -64,20 +64,20 @@ export function playHeroAnimation(delay = 0.2) {
   gsap.to('.hero-meta .meta-item', {
     y: 0,
     opacity: 1,
-    duration: 1,
+    duration: 0.9,
     stagger: 0.1,
-    delay: delay + 0.35,
-    ease: 'power4.out',
+    delay: delay + 0.3,
+    ease: 'power3.out',
   })
 }
 
 // Resets hero words into hidden position before intro runs
 export function resetHeroToHidden() {
   gsap.set('.hero-text-block .word', { y: '115%' })
-  gsap.set('.hero-meta .meta-item', { y: 30, opacity: 0 })
+  gsap.set('.hero-meta .meta-item', { y: 20, opacity: 0 })
 }
 
-// Sets up scroll-triggered animations for auto-split headings and metric bars
+// Sets up scroll-triggered animations for auto-split headings
 export function initScrollAnimations() {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   if (prefersReducedMotion) return
@@ -94,32 +94,5 @@ export function initScrollAnimations() {
         ease: 'expo.out',
       })
     }
-  })
-
-  // Fade-in reveals
-  gsap.utils.toArray('.reveal-fade').forEach((el) => {
-    gsap.from(el, {
-      scrollTrigger: { trigger: el, start: 'top 92%' },
-      y: 20,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out',
-    })
-  })
-
-  // Benchmark growth bars
-  gsap.utils.toArray('.anim-bar').forEach((bar) => {
-    const targetWidth = bar.getAttribute('data-width') || '100%'
-    bar.style.width = targetWidth
-    gsap.fromTo(
-      bar,
-      { scaleX: 0 },
-      {
-        scaleX: 1,
-        duration: 1.4,
-        ease: 'expo.out',
-        scrollTrigger: { trigger: bar.parentElement, start: 'top 90%' },
-      },
-    )
   })
 }

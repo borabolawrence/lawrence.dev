@@ -1,21 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --bg-primary: #0A0D14;
-  --bg-surface: #0F131D;
-  --bg-surface-elevated: #161C2A;
-  --text-main: #F1F5F9;
-  --text-muted: #94A3B8;
-  --text-subtle: #64748B;
-  
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-highlight: rgba(0, 229, 255, 0.25);
-  
-  --cyan: #00E5FF;
-  --cyan-glow: rgba(0, 229, 255, 0.15);
-  --emerald: #10B981;
-  --emerald-glow: rgba(16, 185, 129, 0.2);
-  --rose: #F43F5E;
+  --bg-base: #0B0E14;
+  --bg-surface: #121620;
+  --bg-surface-elevated: #181E2B;
+  --border-subtle: #1E2433;
+  --border-active: #2D3748;
+
+  --text-main: #F8FAFC;
+  --text-body: #94A3B8;
+  --text-muted: #64748B;
+
+  --accent-amber: #F59E0B;
+  --accent-blue: #38BDF8;
 
   --font-display: 'Syne', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -31,29 +28,18 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-base);
   color: var(--text-main);
 }
 
 body {
   font-family: var(--font-body);
-  background-color: var(--bg-primary);
-  color: var(--text-main);
-  line-height: 1.6;
+  background-color: var(--bg-base);
+  color: var(--text-body);
+  line-height: 1.65;
   overflow-x: hidden;
-}
-
-/* Technical Blueprint Grid Background */
-.bg-blueprint {
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-.bg-dots {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 0);
-  background-size: 24px 24px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Typography Utility Classes */
@@ -77,7 +63,7 @@ body {
   will-change: transform;
 }
 
-/* Hero kinetic words start tucked below mask */
+/* Hero kinetic words start tucked below mask to avoid FOUC */
 .hero-text-block .word {
   transform: translateY(115%);
   will-change: transform;
@@ -85,61 +71,48 @@ body {
 
 .hero-meta .meta-item {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(20px);
 }
 
-/* Accessibility Focus States */
+/* Clean, Accessible Focus Indicators */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--cyan);
+  outline: 2px solid var(--accent-amber);
   outline-offset: 4px;
 }
 
-/* Status Indicators */
-.pulse-emerald {
-  box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
-}
-
-.pulse-cyan {
-  box-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
-}
-
-/* Terminal Styling */
-.terminal-window {
-  background: #090C12;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-}
-
-.terminal-header {
-  background: #0E121A;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* Interactive Magnetic Links */
+/* Magnetic Link Styling */
 .magnetic-link {
   display: inline-block;
   transition: color 0.2s ease;
 }
 
-/* Performance Meter Bar */
-.meter-bg {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* Subtle Card Hover Effects */
+.card-hover {
+  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
 }
 
-/* Custom Scrollbar */
+.card-hover:hover {
+  border-color: #2D3748;
+  background-color: #151A26;
+}
+
+/* Code Snippet Blocks */
+pre, code {
+  font-family: var(--font-mono);
+}
+
+/* Custom Minimalist Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: var(--bg-base);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1E293B;
+  background: #1E2433;
   border-radius: 3px;
 }
 
@@ -147,7 +120,7 @@ button:focus-visible {
   background: #334155;
 }
 
-/* Reduced Motion Override */
+/* Accessibility Reduced Motion Override */
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,
