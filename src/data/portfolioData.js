@@ -95,14 +95,14 @@ export const experienceData = [
   {
     period: 'OCT 2026 - PRESENT',
     role: 'Junior Web Developer',
-    company: 'Guanzon',
+    company: 'Guanzon Group of Companies',
     description:
       'Develop and maintain web-based solutions using WordPress, PHP, JavaScript, HTML5, CSS3, and GSAP. Focus on WordPress customization, functionality development, frontend implementation, styling, and website performance improvements.',
   },
   {
     period: 'PREVIOUS EXPERIENCE',
     role: 'IT / MIS Support',
-    company: 'Guanzon Group',
+    company: 'Guanzon Group of Companies',
     description:
       'Managed internal business systems, database maintenance, data updates, and SQL retrieval. Developed PowerShell scripts to automate reporting workflows, processed operational data in Excel (VLOOKUP, PivotTables), and supported database replication and backup operations.',
   },
