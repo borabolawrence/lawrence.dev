@@ -6,6 +6,7 @@ import IntroLoader from './components/IntroLoader'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
 import ProjectShowcase from './components/ProjectShowcase'
+import SkillsSection from './components/SkillsSection'
 import RepoIndex from './components/RepoIndex'
 import ProfileSection from './components/ProfileSection'
 import ContactSection from './components/ContactSection'
@@ -87,6 +88,7 @@ export default function App() {
       <main>
         <HeroSection />
         <ProjectShowcase />
+        <SkillsSection />
         <RepoIndex onReposLoaded={handleReposLoaded} />
         <ProfileSection />
         <ContactSection />

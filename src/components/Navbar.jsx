@@ -49,13 +49,23 @@ export default function Navbar({ onReplayIntro }) {
           </a>
         </li>
         <li>
+          <a href="#skills" className="magnetic-link" onClick={closeMenu}>
+            SKILLS
+          </a>
+        </li>
+        <li>
           <a href="#index" className="magnetic-link" onClick={closeMenu}>
-            INDEX
+            REPOSITORIES
           </a>
         </li>
         <li>
           <a href="#profile" className="magnetic-link" onClick={closeMenu}>
             PROFILE
+          </a>
+        </li>
+        <li>
+          <a href="#contact" className="magnetic-link nav-contact-highlight" onClick={closeMenu}>
+            CONTACT
           </a>
         </li>
       </ul>
