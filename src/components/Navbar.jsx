@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { personalData } from '../data/portfolioData'
-import lmbIcon from '../assets/lmb.png'
 
 export default function Navbar({ onReplayIntro }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)

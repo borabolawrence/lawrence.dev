@@ -89,6 +89,45 @@ export const projectsData = [
       ],
     },
   },
+  {
+    id: 'kwip-animation',
+    caseStudyTag: 'Project 02',
+    title: 'KWIP Animation',
+    theme: 'dark',
+    repoUrl: 'https://github.com/borabolawrence/KWIP-Animation',
+    tagline: 'Visual Point-and-Click GSAP Animation Builder for WordPress',
+    description:
+      'Complex scroll animations often require heavy custom scripting or bloat page performance through bulky visual builders. KWIP Animation is an independently developed, theme-agnostic WordPress plugin featuring a React-powered visual iframe inspector. It allows creators to visually point, click, and bind GSAP animations to any DOM element, while loading zero builder code on the public frontend for peak Core Web Vitals.',
+    metrics: [
+      {
+        label: 'Public Frontend Overhead',
+        value: '< 4 KB',
+        width: '15%',
+        accent: true,
+      },
+      {
+        label: 'Visual Builder Bloat',
+        value: '0 KB (Admin Only)',
+        width: '100%',
+        accent: false,
+      },
+    ],
+    architecture: {
+      title: 'Decoupled Motion Pipeline',
+      nodes: [
+        { type: 'single', label: 'WP Admin (React Inspector)' },
+        { type: 'connector', symbol: '↓' },
+        {
+          type: 'split',
+          items: ['Iframe Bridge (postMessage)', 'Config REST API'],
+        },
+        { type: 'connector', symbol: '↓' },
+        { type: 'single', label: 'Post Meta JSON Storage' },
+        { type: 'connector', symbol: '↓' },
+        { type: 'single', label: 'Zero-Bloat Public Runtime', highlight: true },
+      ],
+    },
+  },
 ]
 
 export const experienceData = [

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import SplitText from './common/SplitText'
 import { personalData } from '../data/portfolioData'
 
@@ -8,7 +8,7 @@ export default function RepoIndex({ onReposLoaded }) {
   const [error, setError] = useState(false)
   const sectionRef = useRef(null)
 
-  const fetchRepos = async () => {
+  const fetchRepos = useCallback(async () => {
     setLoading(true)
     setError(false)
     const controller = new AbortController()
@@ -34,7 +34,7 @@ export default function RepoIndex({ onReposLoaded }) {
     } finally {
       setLoading(false)
     }
-  }
+  }, [onReposLoaded])
 
   useEffect(() => {
     if (!sectionRef.current) return
@@ -52,9 +52,11 @@ export default function RepoIndex({ onReposLoaded }) {
       observer.observe(sectionRef.current)
       return () => observer.disconnect()
     } else {
-      fetchRepos()
+      queueMicrotask(() => {
+        fetchRepos()
+      })
     }
-  }, [])
+  }, [fetchRepos])
 
   return (
     <section id="index" ref={sectionRef} className="github-index panel" data-color="light">

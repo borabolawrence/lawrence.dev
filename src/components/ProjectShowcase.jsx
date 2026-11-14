@@ -3,10 +3,11 @@ import SplitText from './common/SplitText'
 import { projectsData } from '../data/portfolioData'
 
 export default function ProjectShowcase() {
-  const [projectA, projectB] = projectsData
+  const [projectA, projectB, projectC] = projectsData
 
   return (
     <>
+      {/* PROJECT A: KWIP IMAGE */}
       {projectA && (
         <section id="work" className="project-showcase dark-block panel" data-color={projectA.theme}>
           <div className="project-header">
@@ -154,6 +155,94 @@ export default function ProjectShowcase() {
                 </ul>
               )}
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* PROJECT C: KWIP ANIMATION */}
+      {projectC && (
+        <section id="kwip-animation" className="project-showcase dark-block panel" data-color={projectC.theme}>
+          <div className="project-header">
+            <span className="mono-label accent-text reveal-fade">{projectC.caseStudyTag}</span>
+            <h2 className="display-title auto-split">
+              <SplitText text={projectC.title} />
+            </h2>
+            {projectC.repoUrl && (
+              <div className="github-link-wrapper reveal-fade">
+                <a
+                  href={projectC.repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="tech-link magnetic-link"
+                >
+                  VIEW REPOSITORY ↗
+                </a>
+              </div>
+            )}
+          </div>
+
+          <div className="project-grid">
+            <div className="project-context">
+              <h3 className="section-title auto-split">
+                <SplitText text="The Problem & Solution" />
+              </h3>
+              <p className="reveal-fade">{projectC.description}</p>
+
+              {projectC.metrics && (
+                <div className="performance-metrics reveal-scale">
+                  <h4 className="mono-label">PERFORMANCE BENCHMARK</h4>
+                  {projectC.metrics.map((metric, idx) => (
+                    <div className="metric-row" key={idx}>
+                      <span className={metric.accent ? 'accent-text' : ''}>{metric.label}</span>
+                      <span className="bar-bg">
+                        <span
+                          className={`bar-fill anim-bar ${metric.accent ? 'accent-bg' : ''}`}
+                          data-width={metric.width}
+                        >
+                          {metric.value}
+                        </span>
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {projectC.architecture && (
+              <div className="project-architecture">
+                <h3 className="section-title auto-split">
+                  <SplitText text={projectC.architecture.title} />
+                </h3>
+                <div className="arch-diagram">
+                  {projectC.architecture.nodes.map((node, idx) => {
+                    if (node.type === 'connector') {
+                      return (
+                        <div key={idx} className="connector draw-line">
+                          {node.symbol}
+                        </div>
+                      )
+                    }
+                    if (node.type === 'split') {
+                      return (
+                        <div key={idx} className="node split draw-node">
+                          {node.items.map((item, itemIdx) => (
+                            <div key={itemIdx}>{item}</div>
+                          ))}
+                        </div>
+                      )
+                    }
+                    return (
+                      <div
+                        key={idx}
+                        className={`node draw-node ${node.highlight ? 'highlight' : ''}`}
+                      >
+                        {node.label}
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         </section>
       )}
