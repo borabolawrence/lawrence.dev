@@ -37,10 +37,16 @@ body {
     overflow-x: hidden;
 }
 
+body[data-theme="light"] {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    --accent: var(--accent-light, #D90000);
+}
+
 body[data-theme="dark"] {
     background-color: var(--bg-dark);
     color: var(--text-dark);
-    --accent: #FF3300;
+    --accent: var(--accent-dark, #FF3300);
 }
 
 body[data-theme="accent"] {
@@ -166,6 +172,17 @@ body[data-theme="accent"] .accent-text {
     color: inherit;
     text-decoration: none;
     display: inline-block;
+}
+
+.nav-palette-wrap {
+    margin-left: auto;
+    margin-right: 2rem;
+}
+
+@media (max-width: 768px) {
+    .nav-palette-wrap {
+        margin-right: 1rem;
+    }
 }
 
 .status-dot {

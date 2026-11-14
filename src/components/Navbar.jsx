@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { personalData } from '../data/portfolioData'
+import PaletteSwitcher from './PaletteSwitcher'
 
-export default function Navbar({ onReplayIntro }) {
+export default function Navbar({ onReplayIntro, currentPalette, onPaletteChange }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
@@ -30,6 +31,15 @@ export default function Navbar({ onReplayIntro }) {
         <span className="status-dot" aria-hidden="true"></span>
         {personalData.status}
       </div>
+
+      {currentPalette && (
+        <div className="nav-palette-wrap">
+          <PaletteSwitcher
+            currentPalette={currentPalette}
+            onPaletteChange={onPaletteChange}
+          />
+        </div>
+      )}
 
       <button
         className="mobile-menu-btn"
