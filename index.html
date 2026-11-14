@@ -3,30 +3,112 @@
 
 <head>
   <meta charset="UTF-8" />
-
-  <link rel="icon" type="image/png" href="./src/assets/lmb.png" />
-  <link rel="apple-touch-icon" href="./src/assets/lmb.png" />
-  <title>Lawrence | Portfolio</title>
-  <meta name="title" content="Lawrence | Portfolio" />
-  <meta name="description"
-    content="Portfolio of Lawrence Borabo, Junior Web Developer specializing in PHP, WordPress, and Next.js applications." />
-  <meta name="theme-color" content="#F4F4F4" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="%VITE_SITE_URL%" />
-  <meta property="og:title" content="Lawrence | Portfolio" />
-  <meta property="og:description" content="Welcome to Lawrence's Portfolio." />
-  <meta property="og:image" content="%VITE_SITE_URL%social-preview.png" />
-
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="%VITE_SITE_URL%" />
-  <meta property="twitter:title" content="Lawrence | Portfolio" />
-  <meta property="twitter:description" content="Welcome to Lawrence's Portfolio." />
-  <meta property="twitter:image" content="%VITE_SITE_URL%social-preview.png" />
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Primary Meta Tags -->
+  <title>Lawrence Borabo — Web Developer | WordPress, PHP &amp; Next.js</title>
+  <meta name="title" content="Lawrence Borabo — Web Developer | WordPress, PHP &amp; Next.js" />
+  <meta name="description"
+    content="Portfolio of Lawrence Borabo, Junior Web Developer based in Dagupan City, Philippines. Specializing in WordPress performance plugins, PHP backend systems, and modern Next.js applications." />
+  <meta name="keywords"
+    content="Lawrence Borabo, Web Developer, WordPress Developer, PHP Developer, Next.js Developer, React Developer, Full Stack Developer, Philippines Web Developer, Dagupan City Developer, KWIP Image, Invite Me, GSAP, Web Performance" />
+  <meta name="author" content="Lawrence Borabo" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow" />
+  <link rel="canonical" href="%VITE_SITE_URL%/" />
 
+  <!-- Theme Colors -->
+  <meta name="theme-color" content="#F4F4F4" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0A0A0A" media="(prefers-color-scheme: dark)" />
+
+  <!-- Favicons & App Icons -->
+  <link rel="icon" type="image/png" href="./src/assets/lmb.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/lmb.png" />
+  <link rel="apple-touch-icon" href="./src/assets/lmb.png" />
+
+  <!-- Open Graph / Facebook / LinkedIn / Discord -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Lawrence Borabo Portfolio" />
+  <meta property="og:url" content="%VITE_SITE_URL%/" />
+  <meta property="og:title" content="Lawrence Borabo — Web Developer | WordPress, PHP &amp; Next.js" />
+  <meta property="og:description"
+    content="Explore the portfolio and engineering archives of Lawrence Borabo — Junior Web Developer specializing in WordPress optimization plugins, PHP systems, and modern Next.js applications." />
+  <meta property="og:image" content="%VITE_SITE_URL%/social-preview.png" />
+  <meta property="og:image:secure_url" content="%VITE_SITE_URL%/social-preview.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Lawrence Borabo — Web Developer Portfolio Preview" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="%VITE_SITE_URL%/" />
+  <meta name="twitter:title" content="Lawrence Borabo — Web Developer | WordPress, PHP &amp; Next.js" />
+  <meta name="twitter:description"
+    content="Explore the portfolio and engineering archives of Lawrence Borabo — Junior Web Developer specializing in WordPress optimization plugins, PHP systems, and modern Next.js applications." />
+  <meta name="twitter:image" content="%VITE_SITE_URL%/social-preview.png" />
+  <meta name="twitter:image:alt" content="Lawrence Borabo — Web Developer Portfolio Preview" />
+
+  <!-- Structured Data (JSON-LD) for Google Rich Results & Knowledge Graph -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "%VITE_SITE_URL%/#person",
+        "name": "Lawrence Borabo",
+        "jobTitle": "Junior Web Developer",
+        "url": "%VITE_SITE_URL%/",
+        "image": "%VITE_SITE_URL%/lmb.png",
+        "sameAs": [
+          "https://github.com/borabolawrence",
+          "https://www.linkedin.com/in/lawrence-borabo/"
+        ],
+        "email": "mailto:borabolawrence@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Dagupan City",
+          "addressCountry": "PH"
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Guanzon Group of Companies"
+        },
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Universidad de Dagupan"
+        },
+        "knowsAbout": [
+          "WordPress Development",
+          "PHP",
+          "Next.js",
+          "React",
+          "JavaScript",
+          "MySQL",
+          "Tailwind CSS",
+          "GSAP Animations",
+          "Prisma ORM",
+          "Web Performance Optimization"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "%VITE_SITE_URL%/#website",
+        "url": "%VITE_SITE_URL%/",
+        "name": "Lawrence Borabo Portfolio",
+        "description": "Portfolio and engineering archives of Lawrence Borabo, Junior Web Developer specializing in PHP, WordPress, and Next.js applications.",
+        "publisher": {
+          "@id": "%VITE_SITE_URL%/#person"
+        },
+        "inLanguage": "en-US"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Typography Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
