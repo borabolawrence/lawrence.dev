@@ -19,66 +19,70 @@ export default function Navbar({ onReplayIntro, currentPalette, onPaletteChange 
 
   return (
     <nav className="site-nav" aria-label="Main Navigation">
-      <div
-        className="nav-logo cursor-pointer select-none"
-        onClick={onReplayIntro}
-        title="Click to replay intro animation"
-      >
-        {personalData.shortName}
-      </div>
-
-      <div className="nav-status desktop-only">
-        <span className="status-dot" aria-hidden="true"></span>
-        {personalData.status}
-      </div>
-
-      {currentPalette && (
-        <div className="nav-palette-wrap">
-          <PaletteSwitcher
-            currentPalette={currentPalette}
-            onPaletteChange={onPaletteChange}
-          />
+      <div className="nav-brand-group">
+        <div
+          className="nav-logo cursor-pointer select-none"
+          onClick={onReplayIntro}
+          title="Click to replay intro animation"
+        >
+          {personalData.shortName}
         </div>
-      )}
 
-      <button
-        className="mobile-menu-btn"
-        type="button"
-        aria-expanded={mobileMenuOpen}
-        aria-controls="primary-navigation"
-        aria-label="Toggle Menu"
-        onClick={() => setMobileMenuOpen((prev) => !prev)}
-      >
-        {mobileMenuOpen ? 'CLOSE' : 'MENU'}
-      </button>
+        <div className="nav-status desktop-only">
+          <span className="status-dot" aria-hidden="true"></span>
+          {personalData.status}
+        </div>
+      </div>
 
-      <ul id="primary-navigation" className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>
-        <li>
-          <a href="#work" className="magnetic-link" onClick={closeMenu}>
-            PROJECTS
-          </a>
-        </li>
-        <li>
-          <a href="#skills" className="magnetic-link" onClick={closeMenu}>
-            SKILLS
-          </a>
-        </li>
-        <li>
-          <a href="#index" className="magnetic-link" onClick={closeMenu}>
-            REPOSITORIES
-          </a>
-        </li>
-        <li>
-          <a href="#profile" className="magnetic-link" onClick={closeMenu}>
-            PROFILE
-          </a>
-        </li>
-        <li>
-          <a href="#contact" className="magnetic-link nav-contact-highlight" onClick={closeMenu}>
-            CONTACT
-          </a>
-        </li>
-      </ul>
+      <div className="nav-right-group">
+        {currentPalette && (
+          <div className="nav-palette-wrap">
+            <PaletteSwitcher
+              currentPalette={currentPalette}
+              onPaletteChange={onPaletteChange}
+            />
+          </div>
+        )}
+
+        <button
+          className="mobile-menu-btn"
+          type="button"
+          aria-expanded={mobileMenuOpen}
+          aria-controls="primary-navigation"
+          aria-label="Toggle Menu"
+          onClick={() => setMobileMenuOpen((prev) => !prev)}
+        >
+          {mobileMenuOpen ? 'CLOSE' : 'MENU'}
+        </button>
+
+        <ul id="primary-navigation" className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>
+          <li>
+            <a href="#work" className="magnetic-link" onClick={closeMenu}>
+              PROJECTS
+            </a>
+          </li>
+          <li>
+            <a href="#skills" className="magnetic-link" onClick={closeMenu}>
+              SKILLS
+            </a>
+          </li>
+          <li>
+            <a href="#index" className="magnetic-link" onClick={closeMenu}>
+              REPOSITORIES
+            </a>
+          </li>
+          <li>
+            <a href="#profile" className="magnetic-link" onClick={closeMenu}>
+              PROFILE
+            </a>
+          </li>
+          <li>
+            <a href="#contact" className="magnetic-link nav-contact-highlight" onClick={closeMenu}>
+              CONTACT
+            </a>
+          </li>
+        </ul>
+      </div>
     </nav>
   )
 }

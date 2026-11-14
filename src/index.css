@@ -161,6 +161,38 @@ body[data-theme="accent"] .accent-text {
     font-size: 0.85rem;
 }
 
+.nav-brand-group {
+    display: flex;
+    align-items: center;
+    gap: 3.5rem;
+}
+
+.nav-logo {
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+}
+
+.nav-logo:hover {
+    opacity: 0.75;
+}
+
+.nav-status {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    opacity: 0.85;
+    white-space: nowrap;
+}
+
+.nav-right-group {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
 .nav-links {
     display: flex;
     gap: 2rem;
@@ -175,13 +207,23 @@ body[data-theme="accent"] .accent-text {
 }
 
 .nav-palette-wrap {
-    margin-left: auto;
-    margin-right: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 1024px) {
+    .nav-brand-group {
+        gap: 2rem;
+    }
 }
 
 @media (max-width: 768px) {
-    .nav-palette-wrap {
-        margin-right: 1rem;
+    .nav-brand-group {
+        gap: 1rem;
+    }
+
+    .nav-right-group {
+        gap: 1rem;
     }
 }
 
