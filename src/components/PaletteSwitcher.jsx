@@ -36,27 +36,80 @@ export default function PaletteSwitcher({ currentPalette, onPaletteChange }) {
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="palette-switcher-btn flex items-center gap-2 px-3 py-1.5 border border-current text-xs uppercase tracking-wider cursor-pointer hover:opacity-80 transition-all select-none"
-        title="Change portfolio color palette"
+        className="palette-switcher-btn group flex items-center gap-2 px-3 py-1.5 border border-current/30 hover:border-current text-xs uppercase tracking-wider cursor-pointer transition-all select-none bg-current/5 hover:bg-current/10"
+        style={{
+          boxShadow: isOpen ? `0 0 16px ${currentPalette.accentGlow || 'rgba(0,0,0,0.2)'}` : undefined,
+          borderColor: isOpen ? currentPalette.accent : undefined,
+        }}
+        title="Open color palette calibration"
         aria-expanded={isOpen}
         aria-label="Color palette selector"
       >
+        {/* Glowing Active Dot */}
         <span
-          className="w-2.5 h-2.5 rounded-full inline-block"
-          style={{ backgroundColor: currentPalette.accent }}
+          className="w-2.5 h-2.5 rounded-full inline-block flex-shrink-0 transition-transform duration-300 group-hover:scale-125"
+          style={{
+            backgroundColor: currentPalette.accent,
+            boxShadow: `0 0 8px ${currentPalette.accent}`,
+          }}
         />
-        <span className="hidden md:inline">{currentPalette.name.split(' ')[1] || currentPalette.name}</span>
-        <span className="opacity-50">▾</span>
+
+        {/* Current Palette Label */}
+        <span className="font-semibold tracking-wider">
+          {currentPalette.label}
+        </span>
+
+        {/* Mini 3-tone swatch bar */}
+        <span className="hidden sm:inline-flex items-center gap-0.5 ml-1 border border-current/20 p-0.5 rounded-sm">
+          <span
+            className="w-1.5 h-2.5 rounded-xs inline-block"
+            style={{ backgroundColor: currentPalette.bgDark }}
+          />
+          <span
+            className="w-1.5 h-2.5 rounded-xs inline-block"
+            style={{ backgroundColor: currentPalette.bgLight }}
+          />
+          <span
+            className="w-1.5 h-2.5 rounded-xs inline-block"
+            style={{ backgroundColor: currentPalette.accent }}
+          />
+        </span>
+
+        {/* Dynamic Chevron */}
+        <span
+          className={`opacity-60 transition-transform duration-200 text-[10px] ${
+            isOpen ? 'rotate-180' : ''
+          }`}
+          aria-hidden="true"
+        >
+          ▾
+        </span>
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-64 p-3 border border-current bg-[var(--bg-dark)] text-[var(--text-dark)] shadow-2xl z-50 space-y-2">
-          <div className="flex justify-between items-center pb-2 border-b border-current/20 text-[10px] uppercase tracking-wider opacity-60">
-            <span>Color Palettes</span>
-            <span>05 Options</span>
+        <div
+          className="absolute right-0 mt-2.5 w-[320px] sm:w-[350px] p-3.5 border border-white/20 bg-[#0A0A0C] text-[#F5F5F7] shadow-[0_25px_60px_rgba(0,0,0,0.85)] z-50 space-y-2.5 rounded-xs"
+          style={{
+            boxShadow: `0 20px 50px -10px rgba(0,0,0,0.9), 0 0 25px -5px ${currentPalette.accentGlow || 'transparent'}`,
+          }}
+        >
+          {/* Header Bar */}
+          <div className="flex justify-between items-center pb-2.5 border-b border-white/10 text-[10px] uppercase tracking-wider text-white">
+            <span className="font-bold flex items-center gap-1.5">
+              <span
+                className="w-1.5 h-1.5 rounded-full inline-block"
+                style={{
+                  backgroundColor: currentPalette.accent,
+                  boxShadow: `0 0 6px ${currentPalette.accent}`,
+                }}
+              />
+              SYSTEM CALIBRATION
+            </span>
+            <span className="text-white/50">06 PROFILES</span>
           </div>
 
-          <div className="space-y-1 max-h-72 overflow-y-auto">
+          {/* Palette List */}
+          <div className="space-y-1.5 max-h-[360px] overflow-y-auto pr-1">
             {palettes.map((p) => {
               const isSelected = p.id === currentPalette.id
               return (
@@ -64,29 +117,85 @@ export default function PaletteSwitcher({ currentPalette, onPaletteChange }) {
                   key={p.id}
                   type="button"
                   onClick={() => handleSelect(p)}
-                  className={`w-full text-left p-2 border transition-all cursor-pointer flex items-center justify-between text-xs ${
-                    isSelected ? 'border-current font-bold' : 'border-transparent hover:border-current/30'
+                  className={`w-full text-left p-2.5 border transition-all cursor-pointer flex flex-col gap-1.5 rounded-xs ${
+                    isSelected
+                      ? 'border-white text-white font-bold'
+                      : 'border-white/10 text-white/90 hover:border-white/40 hover:bg-white/5 hover:text-white'
                   }`}
                   style={{
-                    backgroundColor: isSelected ? `${p.accent}20` : 'transparent',
+                    backgroundColor: isSelected ? `${p.accent}25` : 'rgba(255, 255, 255, 0.02)',
                     borderColor: isSelected ? p.accent : undefined,
+                    boxShadow: isSelected ? `0 0 16px ${p.accent}30` : undefined,
                   }}
                 >
-                  <div className="flex items-center gap-2">
-                    <span
-                      className="w-3 h-3 rounded-full flex-shrink-0"
-                      style={{ backgroundColor: p.accent }}
-                    />
-                    <span>{p.name}</span>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-mono text-white/40">[{p.num}]</span>
+                      <span
+                        className="w-3 h-3 rounded-full flex-shrink-0 transition-transform duration-200"
+                        style={{
+                          backgroundColor: p.accent,
+                          boxShadow: isSelected ? `0 0 10px ${p.accent}` : undefined,
+                        }}
+                      />
+                      <span className="text-xs font-bold tracking-tight text-white">{p.name}</span>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <span
+                        className="text-[9px] font-mono px-1.5 py-0.5 border uppercase"
+                        style={{
+                          color: isSelected ? p.accent : 'rgba(255, 255, 255, 0.7)',
+                          borderColor: isSelected ? `${p.accent}80` : 'rgba(255, 255, 255, 0.15)',
+                          backgroundColor: isSelected ? `${p.accent}15` : 'transparent',
+                        }}
+                      >
+                        {p.accent}
+                      </span>
+                      {isSelected ? (
+                        <span
+                          className="text-xs font-black"
+                          style={{ color: p.accent }}
+                          aria-label="Selected"
+                        >
+                          ✓
+                        </span>
+                      ) : (
+                        <span className="text-[10px] text-white/30">→</span>
+                      )}
+                    </div>
                   </div>
-                  {isSelected && (
-                    <span className="text-[10px]" style={{ color: p.accent }}>
-                      ✓
+
+                  {/* Subtitle & Tri-tone Preview Bar */}
+                  <div className="flex items-center justify-between text-[10px] text-white/60">
+                    <span className="truncate max-w-[200px]">{p.subtitle}</span>
+                    <span className="inline-flex items-center gap-1">
+                      <span
+                        className="w-2.5 h-2 rounded-xs border border-white/20"
+                        style={{ backgroundColor: p.bgDark }}
+                        title="Dark Background"
+                      />
+                      <span
+                        className="w-2.5 h-2 rounded-xs border border-white/20"
+                        style={{ backgroundColor: p.bgLight }}
+                        title="Light Background"
+                      />
+                      <span
+                        className="w-2.5 h-2 rounded-xs"
+                        style={{ backgroundColor: p.accent }}
+                        title="Accent"
+                      />
                     </span>
-                  )}
+                  </div>
                 </button>
               )
             })}
+          </div>
+
+          {/* Quick Footer Status */}
+          <div className="pt-2 border-t border-white/10 flex items-center justify-between text-[10px] text-white/40">
+            <span>ESC TO CLOSE</span>
+            <span>PERSISTED TO STORAGE</span>
           </div>
         </div>
       )}

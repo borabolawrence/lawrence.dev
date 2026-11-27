@@ -1,12 +1,16 @@
 @import "tailwindcss";
 
 :root {
-    --bg-light: #F4F4F4;
-    --text-light: #111111;
-    --bg-dark: #0A0A0A;
-    --text-dark: #F4F4F4;
+    --bg-light: #F7F7F9;
+    --text-light: #0E0E11;
+    --bg-dark: #0A0A0C;
+    --text-dark: #F5F5F7;
 
-    --accent: #D90000;
+    --accent: #FF1E44;
+    --accent-light: #DC2626;
+    --accent-dark: #FF1E44;
+    --accent-contrast: #FFFFFF;
+    --accent-glow: rgba(255, 30, 68, 0.4);
 
     --border-light: rgba(17, 17, 17, 0.2);
     --border-dark: rgba(244, 244, 244, 0.2);
@@ -40,18 +44,18 @@ body {
 body[data-theme="light"] {
     background-color: var(--bg-light);
     color: var(--text-light);
-    --accent: var(--accent-light, #D90000);
+    --accent: var(--accent-light, #DC2626);
 }
 
 body[data-theme="dark"] {
     background-color: var(--bg-dark);
     color: var(--text-dark);
-    --accent: var(--accent-dark, #FF3300);
+    --accent: var(--accent-dark, #FF1E44);
 }
 
 body[data-theme="accent"] {
     background-color: var(--accent);
-    color: var(--bg-dark);
+    color: var(--accent-contrast, #FFFFFF);
 }
 
 a:focus-visible,
@@ -130,7 +134,7 @@ body[data-theme="dark"] button:focus-visible {
 }
 
 body[data-theme="accent"] .accent-text {
-    color: var(--bg-dark);
+    color: var(--accent-contrast, #FFFFFF);
 }
 
 .tagline {
@@ -153,12 +157,28 @@ body[data-theme="accent"] .accent-text {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 2rem;
-    mix-blend-mode: difference;
-    color: #fff;
+    padding: 1.1rem 2rem;
     z-index: 100;
     font-family: var(--font-mono);
     font-size: 0.85rem;
+    background-color: rgba(247, 247, 249, 0.88);
+    color: var(--text-light);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-light);
+    transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+}
+
+body[data-theme="dark"] .site-nav {
+    background-color: rgba(10, 10, 12, 0.88);
+    color: var(--text-dark);
+    border-bottom: 1px solid var(--border-dark);
+}
+
+body[data-theme="accent"] .site-nav {
+    background-color: rgba(10, 10, 12, 0.92);
+    color: var(--text-dark);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .nav-brand-group {
@@ -231,9 +251,10 @@ body[data-theme="accent"] .accent-text {
     display: inline-block;
     width: 8px;
     height: 8px;
-    background-color: #00FF66;
+    background-color: var(--accent);
     border-radius: 50%;
     margin-right: 8px;
+    box-shadow: 0 0 10px var(--accent);
     animation: pulse 2s infinite;
 }
 
@@ -331,8 +352,9 @@ body[data-theme="dark"] .btn-primary {
 
 .btn-primary:hover {
     background-color: var(--accent);
-    color: #FFFFFF;
+    color: var(--accent-contrast, #FFFFFF);
     border-color: var(--accent);
+    box-shadow: 0 0 18px var(--accent-glow);
     transform: translateY(-2px);
 }
 
@@ -343,13 +365,23 @@ body[data-theme="dark"] .btn-primary {
 }
 
 .btn-secondary:hover {
-    background-color: currentColor;
+    background-color: var(--text-light);
     color: var(--bg-light);
+    border-color: var(--accent);
+    box-shadow: 0 0 16px var(--accent-glow);
     transform: translateY(-2px);
 }
 
 body[data-theme="dark"] .btn-secondary:hover {
+    background-color: var(--text-dark);
     color: var(--bg-dark);
+    border-color: var(--accent);
+}
+
+body[data-theme="accent"] .btn-secondary:hover {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+    border-color: var(--bg-dark);
 }
 
 .tech-badge {
@@ -434,6 +466,7 @@ body[data-theme="dark"] .btn-secondary:hover {
 
 .skill-card:hover {
     border-color: var(--accent);
+    box-shadow: 0 8px 24px -8px var(--accent-glow);
     transform: translateY(-2px);
 }
 
@@ -464,6 +497,11 @@ body[data-theme="dark"] .skill-card-header {
 .nav-contact-highlight {
     color: var(--accent) !important;
     font-weight: 700;
+    transition: text-shadow 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-contact-highlight:hover {
+    text-shadow: 0 0 12px var(--accent-glow);
 }
 
 .contact-header-status {
@@ -507,8 +545,18 @@ body[data-theme="dark"] .skill-card-header {
 }
 
 .btn-copy-email:hover {
-    background-color: #FFFFFF;
-    color: #111111;
+    background-color: currentColor;
+    color: var(--bg-dark);
+}
+
+body[data-theme="accent"] .btn-copy-email {
+    border-color: currentColor;
+    color: currentColor;
+}
+
+body[data-theme="accent"] .btn-copy-email:hover {
+    background-color: var(--accent-contrast, #FFFFFF);
+    color: var(--accent);
 }
 
 .contact-social-row {
@@ -696,11 +744,11 @@ body[data-theme="dark"] .bar-fill {
 
 .bar-fill.accent-bg {
     background: var(--accent) !important;
-    color: var(--bg-light) !important;
+    color: var(--accent-contrast, #FFFFFF) !important;
 }
 
 body[data-theme="dark"] .bar-fill.accent-bg {
-    color: var(--text-dark) !important;
+    color: var(--accent-contrast, #FFFFFF) !important;
 }
 
 .repo-grid {
