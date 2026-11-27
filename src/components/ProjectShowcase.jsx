@@ -15,16 +15,18 @@ export default function ProjectShowcase() {
             <h2 className="display-title auto-split">
               <SplitText text={projectA.title} />
             </h2>
-            {projectA.repoUrl && (
-              <div className="github-link-wrapper reveal-fade">
-                <a
-                  href={projectA.repoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="tech-link magnetic-link"
-                >
-                  VIEW REPOSITORY ↗
-                </a>
+            {projectA.tagline && (
+              <p className="tagline reveal-fade">
+                {projectA.tagline}
+              </p>
+            )}
+            {projectA.techStack && (
+              <div className="project-tags reveal-fade">
+                {projectA.techStack.map((tech, idx) => (
+                  <span key={idx} className="tech-badge">
+                    {tech}
+                  </span>
+                ))}
               </div>
             )}
           </div>
@@ -36,9 +38,36 @@ export default function ProjectShowcase() {
               </h3>
               <p className="reveal-fade">{projectA.description}</p>
 
+              {projectA.highlights && (
+                <div className="project-highlights reveal-fade">
+                  <h4 className="mono-label accent-text">KEY TAKEAWAYS</h4>
+                  <ul className="highlights-list">
+                    {projectA.highlights.map((highlight, idx) => (
+                      <li key={idx}>
+                        <span className="bullet-sym">→</span>
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {projectA.repoUrl && (
+                <div className="project-action-row reveal-fade">
+                  <a
+                    href={projectA.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-brutalist btn-primary magnetic-link"
+                  >
+                    VIEW REPOSITORY ↗
+                  </a>
+                </div>
+              )}
+
               {projectA.metrics && (
                 <div className="performance-metrics reveal-scale">
-                  <h4 className="mono-label">OBSERVED PERFORMANCE (LOCAL TESTING)</h4>
+                  <h4 className="mono-label">BENCHMARK (ORIGINAL VS. WEBP)</h4>
                   {projectA.metrics.map((metric, idx) => (
                     <div className="metric-row" key={idx}>
                       <span className={metric.accent ? 'accent-text' : ''}>{metric.label}</span>
@@ -103,11 +132,19 @@ export default function ProjectShowcase() {
             <h2 className="display-title auto-split">
               <SplitText text={projectB.title} />
             </h2>
-
             {projectB.tagline && (
-              <p className="tagline auto-split">
-                <SplitText text={projectB.tagline} />
+              <p className="tagline reveal-fade">
+                {projectB.tagline}
               </p>
+            )}
+            {projectB.techStack && (
+              <div className="project-tags reveal-fade">
+                {projectB.techStack.map((tech, idx) => (
+                  <span key={idx} className="tech-badge">
+                    {tech}
+                  </span>
+                ))}
+              </div>
             )}
           </div>
 
@@ -135,7 +172,7 @@ export default function ProjectShowcase() {
 
             <div className="project-context">
               <h3 className="section-title auto-split">
-                <SplitText text="Product Architecture" />
+                <SplitText text="The Problem & Solution" />
               </h3>
               {Array.isArray(projectB.description) ? (
                 projectB.description.map((para, idx) => (
@@ -147,12 +184,18 @@ export default function ProjectShowcase() {
                 <p className="reveal-fade">{projectB.description}</p>
               )}
 
-              {projectB.techStack && (
-                <ul className="tech-stack-list reveal-fade">
-                  {projectB.techStack.map((tech, idx) => (
-                    <li key={idx}>{tech}</li>
-                  ))}
-                </ul>
+              {projectB.highlights && (
+                <div className="project-highlights reveal-fade">
+                  <h4 className="mono-label accent-text">KEY TAKEAWAYS</h4>
+                  <ul className="highlights-list">
+                    {projectB.highlights.map((highlight, idx) => (
+                      <li key={idx}>
+                        <span className="bullet-sym">→</span>
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               )}
             </div>
           </div>
@@ -167,16 +210,18 @@ export default function ProjectShowcase() {
             <h2 className="display-title auto-split">
               <SplitText text={projectC.title} />
             </h2>
-            {projectC.repoUrl && (
-              <div className="github-link-wrapper reveal-fade">
-                <a
-                  href={projectC.repoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="tech-link magnetic-link"
-                >
-                  VIEW REPOSITORY ↗
-                </a>
+            {projectC.tagline && (
+              <p className="tagline reveal-fade">
+                {projectC.tagline}
+              </p>
+            )}
+            {projectC.techStack && (
+              <div className="project-tags reveal-fade">
+                {projectC.techStack.map((tech, idx) => (
+                  <span key={idx} className="tech-badge">
+                    {tech}
+                  </span>
+                ))}
               </div>
             )}
           </div>
@@ -187,6 +232,33 @@ export default function ProjectShowcase() {
                 <SplitText text="The Problem & Solution" />
               </h3>
               <p className="reveal-fade">{projectC.description}</p>
+
+              {projectC.highlights && (
+                <div className="project-highlights reveal-fade">
+                  <h4 className="mono-label accent-text">KEY TAKEAWAYS</h4>
+                  <ul className="highlights-list">
+                    {projectC.highlights.map((highlight, idx) => (
+                      <li key={idx}>
+                        <span className="bullet-sym">→</span>
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {projectC.repoUrl && (
+                <div className="project-action-row reveal-fade">
+                  <a
+                    href={projectC.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-brutalist btn-primary magnetic-link"
+                  >
+                    VIEW REPOSITORY ↗
+                  </a>
+                </div>
+              )}
 
               {projectC.metrics && (
                 <div className="performance-metrics reveal-scale">

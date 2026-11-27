@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://borabolawrence.github.io/sitemap.xml
+Sitemap: https://lawrenceborabo.vercel.app/sitemap.xml

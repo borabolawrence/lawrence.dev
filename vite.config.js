@@ -17,6 +17,22 @@ export default defineConfig(({ mode }) => {
 
   return {
     envPrefix: ['VITE_', 'PUBLIC_'],
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              if (id.includes('react-dom') || id.includes('react')) {
+                return 'react-vendor'
+              }
+              if (id.includes('gsap') || id.includes('lenis')) {
+                return 'motion-vendor'
+              }
+            }
+          },
+        },
+      },
+    },
     plugins: [
       react(),
       tailwindcss(),
@@ -26,8 +42,18 @@ export default defineConfig(({ mode }) => {
           return html
             .replace(/%PUBLIC_SITE_URL%/g, siteUrl)
             .replace(/%VITE_SITE_URL%/g, siteUrl)
-            // Normalize any accidental double-slashes in URLs (except https://)
-            .replace(/([^:])\/{2,}/g, '$1/')
+        },
+        generateBundle() {
+          this.emitFile({
+            type: 'asset',
+            fileName: 'robots.txt',
+            source: `User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}/sitemap.xml\n`,
+          })
+          this.emitFile({
+            type: 'asset',
+            fileName: 'sitemap.xml',
+            source: `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url>\n    <loc>${siteUrl}/</loc>\n    <lastmod>2026-11-27</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>1.0</priority>\n  </url>\n</urlset>\n`,
+          })
         },
       },
     ],
