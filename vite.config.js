@@ -9,7 +9,11 @@ export default defineConfig(({ mode }) => {
     env.PUBLIC_SITE_URL ||
     env.VITE_PUBLIC_SITE_URL ||
     env.VITE_SITE_URL ||
-    (env.VERCEL_URL ? `https://${env.VERCEL_URL}` : 'https://lawrenceborabo.vercel.app')
+    (env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : env.VERCEL_URL
+        ? `https://${env.VERCEL_URL}`
+        : 'https://lawrencedev.vercel.app')
   const siteUrl = rawSiteUrl.replace(/\/+$/, '')
 
   process.env.PUBLIC_SITE_URL = siteUrl
