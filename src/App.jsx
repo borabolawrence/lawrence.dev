@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import 'lenis/dist/lenis.css'
@@ -58,9 +58,9 @@ export default function App() {
     setShouldRunIntro(true)
   }
 
-  const handleReposLoaded = (repos) => {
+  const handleReposLoaded = useCallback((repos) => {
     setRepoCount(repos.length)
-  }
+  }, [])
 
   useEffect(() => {
     if (repoCount > 0) {

@@ -11,6 +11,23 @@ export default function RepoIndex({ onReposLoaded }) {
   const fetchRepos = useCallback(async () => {
     setLoading(true)
     setError(false)
+
+    const cacheKey = `gh_repos_${personalData.contact.githubUsername}`
+    try {
+      const cached = sessionStorage.getItem(cacheKey)
+      if (cached) {
+        const { data, timestamp } = JSON.parse(cached)
+        if (Array.isArray(data) && Date.now() - timestamp < 10 * 60 * 1000) {
+          setRepos(data)
+          if (onReposLoaded && data.length > 0) onReposLoaded(data)
+          setLoading(false)
+          return
+        }
+      }
+    } catch {
+      // ignore storage errors
+    }
+
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), 8000)
 
@@ -25,6 +42,11 @@ export default function RepoIndex({ onReposLoaded }) {
       if (Array.isArray(data) && data.length > 0) {
         setRepos(data)
         if (onReposLoaded) onReposLoaded(data)
+        try {
+          sessionStorage.setItem(cacheKey, JSON.stringify({ data, timestamp: Date.now() }))
+        } catch {
+          // ignore storage quota errors
+        }
       } else {
         setRepos([])
       }

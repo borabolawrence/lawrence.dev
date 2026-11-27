@@ -135,6 +135,11 @@ export function applyPaletteToDOM(palette) {
   root.style.setProperty('--accent-contrast', palette.accentContrast || '#FFFFFF')
   root.style.setProperty('--accent-glow', palette.accentGlow || `${palette.accent}66`)
 
+  const lightThemeMeta = document.querySelector('meta[name="theme-color"][media*="light"]')
+  const darkThemeMeta = document.querySelector('meta[name="theme-color"][media*="dark"]')
+  if (lightThemeMeta) lightThemeMeta.setAttribute('content', palette.bgLight)
+  if (darkThemeMeta) darkThemeMeta.setAttribute('content', palette.bgDark)
+
   try {
     localStorage.setItem('portfolio_palette', palette.id)
   } catch {

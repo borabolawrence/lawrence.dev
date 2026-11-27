@@ -36,7 +36,7 @@ export default function PaletteSwitcher({ currentPalette, onPaletteChange }) {
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="palette-switcher-btn group flex items-center gap-2 px-3 py-1.5 border border-current/30 hover:border-current text-xs uppercase tracking-wider cursor-pointer transition-all select-none bg-current/5 hover:bg-current/10"
+        className="palette-switcher-btn group flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 border border-current/30 hover:border-current text-xs uppercase tracking-wider cursor-pointer transition-all select-none bg-current/5 hover:bg-current/10"
         style={{
           boxShadow: isOpen ? `0 0 16px ${currentPalette.accentGlow || 'rgba(0,0,0,0.2)'}` : undefined,
           borderColor: isOpen ? currentPalette.accent : undefined,
@@ -55,7 +55,7 @@ export default function PaletteSwitcher({ currentPalette, onPaletteChange }) {
         />
 
         {/* Current Palette Label */}
-        <span className="font-semibold tracking-wider">
+        <span className="font-semibold tracking-wider max-w-[92px] sm:max-w-none truncate">
           {currentPalette.label}
         </span>
 
@@ -88,7 +88,7 @@ export default function PaletteSwitcher({ currentPalette, onPaletteChange }) {
 
       {isOpen && (
         <div
-          className="absolute right-0 mt-2.5 w-[320px] sm:w-[350px] p-3.5 border border-white/20 bg-[#0A0A0C] text-[#F5F5F7] shadow-[0_25px_60px_rgba(0,0,0,0.85)] z-50 space-y-2.5 rounded-xs"
+          className="fixed left-4 right-4 top-[4.25rem] sm:absolute sm:left-auto sm:right-0 sm:top-auto sm:mt-2.5 sm:w-[350px] p-3.5 border border-white/20 bg-[#0A0A0C] text-[#F5F5F7] shadow-[0_25px_60px_rgba(0,0,0,0.85)] z-50 space-y-2.5 rounded-xs"
           style={{
             boxShadow: `0 20px 50px -10px rgba(0,0,0,0.9), 0 0 25px -5px ${currentPalette.accentGlow || 'transparent'}`,
           }}
@@ -109,7 +109,7 @@ export default function PaletteSwitcher({ currentPalette, onPaletteChange }) {
           </div>
 
           {/* Palette List */}
-          <div className="space-y-1.5 max-h-[360px] overflow-y-auto pr-1">
+          <div className="space-y-1.5 max-h-[65vh] sm:max-h-[360px] overflow-y-auto pr-1">
             {palettes.map((p) => {
               const isSelected = p.id === currentPalette.id
               return (
